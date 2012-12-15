@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ASIFormDataRequest.h"
 
-@interface BumpViewController : UIViewController <RenrenDelegate>
+@interface BumpViewController : UIViewController <RenrenDelegate, ASIHTTPRequestDelegate>
 
 @property (retain,nonatomic)Renren *renren;
 
