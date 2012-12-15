@@ -77,6 +77,8 @@
 - (void)controlProgressReceived:(NSNotification *)noti
 {
     YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    [[package.dictionaryData objectForKey:@"duration"] integerValue];
+    [[package.dictionaryData objectForKey:@"duration"] integerValue];    
     NSLog(@"...progress sync");
 }
 
