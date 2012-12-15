@@ -1647,7 +1647,6 @@
 				7913E75D167CDD4E003658AB /* ASIS3ServiceRequest.m in Sources */,
 				7913E771167CE5EF003658AB /* Reachability.m in Sources */,
 				79501517167CF1D200AFFC2F /* BumpManager.m in Sources */,
->>>>>>> e4956bb13ada959632901fa281f0e7ad65543c5e
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
