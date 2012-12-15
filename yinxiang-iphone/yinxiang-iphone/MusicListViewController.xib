@@ -567,8 +567,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="nav_icon_ok.png">{16, 16}</string>
-			<string key="nav_line.png">{16, 16}</string>
+			<string key="nav_icon_ok.png">{50, 44}</string>
+			<string key="nav_line.png">{2, 44}</string>
 		</dictionary>
 		<bool key="IBDocument.UseAutolayout">YES</bool>
 		<string key="IBCocoaTouchPluginVersion">1926</string>

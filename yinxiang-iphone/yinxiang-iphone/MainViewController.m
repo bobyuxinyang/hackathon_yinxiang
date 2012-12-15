@@ -8,17 +8,22 @@
 
 #import "MainViewController.h"
 #import "AudioFile.h"
+#import "AudioMessage.h"
 #import "YXSharePackage.h"
 #import "AppUtil.h"
 #import "define.h"
 #import "XMPPManager.h"
 #import "BumpClient.h"
+#import "YXRecorder.h"
+#import "MessageCell.h" 
 
 @interface MainViewController () {
     NSTimer *timer;
 }
 
 @property (strong, nonatomic) IBOutlet UILabel *deviceName;
+
+@property (strong, nonatomic) IBOutlet UIButton *recordBtn;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
@@ -31,16 +36,37 @@
 @property (strong, nonatomic) IBOutlet UIImageView *musicCover;
 @property (strong, nonatomic) IBOutlet UILabel *durationText;
 @property (strong, nonatomic) IBOutlet UILabel *currentTimeText;
+@property (strong, nonatomic) YXRecorder *recorder;
+
+@property (strong, nonatomic) NSMutableArray *messages;
 @end
 
 @implementation MainViewController
 @synthesize player = _player;
+@synthesize recorder = _recorder;
 
 @synthesize musicListViewControler = _musicListViewControler;
+
+- (NSMutableArray *)messages
+{
+    if (_messages == nil) {
+        _messages = [NSMutableArray array];
+    }
+    return _messages;
+}
 
 - (NSInteger)currentMusicIndex
 {
     return self.player.index;
+}
+
+- (YXRecorder *)recorder
+{
+    if (_recorder == nil) {
+        _recorder = [[YXRecorder alloc]init];
+    }
+    
+    return _recorder;
 }
 
 - (MusicListViewController *)musicListViewControler
@@ -174,12 +200,48 @@
                                                object:nil];
 }
 
+- (void)registerLongPressToRecord
+{
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(record:)];
+    [self.recordBtn addGestureRecognizer:longPress];
+    longPress.allowableMovement = NO;
+    longPress.minimumPressDuration = 0.5;
+}
+
+
+- (IBAction)record:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    if (btn.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"start recoding");
+        NSString *user = [[NSUserDefaults standardUserDefaults]valueForKey:YXDeviceName];
+        NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
+        NSString *caldate = [now description];
+        NSString *documentFold = [AppUtil getDocFolder];
+        NSString *recorderFilePath = [NSString stringWithFormat:@"%@/%@-%@.caf", documentFold, caldate, user, nil];
+        
+        self.recorder.recorderFilePath = recorderFilePath;
+        [self.recorder startRecording];
+    } else if (btn.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"end recoding");
+        [self.recorder stopRecording];
+        
+        //table
+//        NSLog(@"%@", self.recorder.fileData);
+        AudioMessage *message = [[AudioMessage alloc]initWithPath:self.recorder.recorderFilePath :@"mine"];
+        
+        [self.messages addObject:message];
+        [self.tableView reloadData];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     [self registerNotification];
     [self setUpMusicList];
+    [self registerLongPressToRecord];
+    
     //播放第一首
     //todo:
     timer = nil;
@@ -296,6 +358,38 @@
     YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
     NSLog(@"...audio received");
 }
+
+
+#pragma mark -- UITableView Delegate
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSLog(@"%d", self.messages.count);
+    return self.messages.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *identifier = @"Message Cell";
+    
+    MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    if (cell == nil) {
+        cell = [[NSBundle mainBundle]loadNibNamed:@"MessageCell" owner:self options:nil].lastObject;
+    }
+    
+    AudioMessage *dict = [self.messages objectAtIndex:indexPath.row];
+    cell.message = dict;
+
+    return cell;
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55.0f;
+}
+
 
 #pragma mark -- UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

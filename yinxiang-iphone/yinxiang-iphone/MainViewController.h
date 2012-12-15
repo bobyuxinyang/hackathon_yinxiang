@@ -10,6 +10,6 @@
 #import "MusicListViewController.h"
 #import "YXMusicPlayer.h"
 
-@interface MainViewController : UIViewController <MusicSelectedDeleagate, MusicPlayerDeleagate, UIAlertViewDelegate>
+@interface MainViewController : UIViewController <MusicSelectedDeleagate, MusicPlayerDeleagate, UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) MusicListViewController *musicListViewControler;
 @end

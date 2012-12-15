@@ -121,6 +121,11 @@
 		6C815475167CF84F00DCAD18 /* table-01_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815474167CF84F00DCAD18 /* table-01_normal.png */; };
 		6C815477167CFAAD00DCAD18 /* icon_cancl.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815476167CFAAD00DCAD18 /* icon_cancl.png */; };
 		6C81547A167CFC4000DCAD18 /* UITextField+HideKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C815479167CFC4000DCAD18 /* UITextField+HideKeyBoard.m */; };
+		6C81548D167D252000DCAD18 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C81548C167D252000DCAD18 /* MessageCell.m */; };
+		6C81548F167D254400DCAD18 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C81548E167D254400DCAD18 /* MessageCell.xib */; };
+		6C815495167D27E300DCAD18 /* AudioMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C815494167D27E300DCAD18 /* AudioMessage.m */; };
+		6C815498167D2A8200DCAD18 /* dialogue_bubble_g.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815496167D2A8200DCAD18 /* dialogue_bubble_g.png */; };
+		6C815499167D2A8200DCAD18 /* dialogue_bubble_w.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815497167D2A8200DCAD18 /* dialogue_bubble_w.png */; };
 		6C9F2154167C430F00D177C9 /* AudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9F2153167C430F00D177C9 /* AudioFile.m */; };
 		6C9F2156167C460800D177C9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C9F2155167C460800D177C9 /* AudioToolbox.framework */; };
 		7913E748167CDD4E003658AB /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 7913E6F7167CDD4E003658AB /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -400,6 +405,13 @@
 		6C815476167CFAAD00DCAD18 /* icon_cancl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_cancl.png; sourceTree = "<group>"; };
 		6C815478167CFC4000DCAD18 /* UITextField+HideKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextField+HideKeyBoard.h"; path = "util/UITextField+HideKeyBoard.h"; sourceTree = "<group>"; };
 		6C815479167CFC4000DCAD18 /* UITextField+HideKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextField+HideKeyBoard.m"; path = "util/UITextField+HideKeyBoard.m"; sourceTree = "<group>"; };
+		6C81548B167D252000DCAD18 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageCell.h; path = Cell/MessageCell.h; sourceTree = "<group>"; };
+		6C81548C167D252000DCAD18 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageCell.m; path = Cell/MessageCell.m; sourceTree = "<group>"; };
+		6C81548E167D254400DCAD18 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		6C815493167D27E300DCAD18 /* AudioMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioMessage.h; path = Model/AudioMessage.h; sourceTree = "<group>"; };
+		6C815494167D27E300DCAD18 /* AudioMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioMessage.m; path = Model/AudioMessage.m; sourceTree = "<group>"; };
+		6C815496167D2A8200DCAD18 /* dialogue_bubble_g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogue_bubble_g.png; sourceTree = "<group>"; };
+		6C815497167D2A8200DCAD18 /* dialogue_bubble_w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogue_bubble_w.png; sourceTree = "<group>"; };
 		6C9F2152167C430F00D177C9 /* AudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioFile.h; path = Model/AudioFile.h; sourceTree = "<group>"; };
 		6C9F2153167C430F00D177C9 /* AudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioFile.m; path = Model/AudioFile.m; sourceTree = "<group>"; };
 		6C9F2155167C460800D177C9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -1024,6 +1036,8 @@
 			children = (
 				6C815467167CEBA300DCAD18 /* background.png */,
 				6C815464167CEB3A00DCAD18 /* navbar_logo.png */,
+				6C815496167D2A8200DCAD18 /* dialogue_bubble_g.png */,
+				6C815497167D2A8200DCAD18 /* dialogue_bubble_w.png */,
 				6C815474167CF84F00DCAD18 /* table-01_normal.png */,
 				6C815432167CD7C400DCAD18 /* pop_next.png */,
 				6C815476167CFAAD00DCAD18 /* icon_cancl.png */,
@@ -1061,6 +1075,8 @@
 			children = (
 				6C9F2152167C430F00D177C9 /* AudioFile.h */,
 				6C9F2153167C430F00D177C9 /* AudioFile.m */,
+				6C815493167D27E300DCAD18 /* AudioMessage.h */,
+				6C815494167D27E300DCAD18 /* AudioMessage.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1071,6 +1087,9 @@
 				6C27531C167C47C1009C4E7F /* AudioCell.xib */,
 				6C27531F167C47E2009C4E7F /* AudioCell.h */,
 				6C275320167C47E2009C4E7F /* AudioCell.m */,
+				6C81548B167D252000DCAD18 /* MessageCell.h */,
+				6C81548C167D252000DCAD18 /* MessageCell.m */,
+				6C81548E167D254400DCAD18 /* MessageCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -1530,6 +1549,9 @@
 				6C815470167CF74E00DCAD18 /* homepage_02.png in Resources */,
 				6C815475167CF84F00DCAD18 /* table-01_normal.png in Resources */,
 				6C815477167CFAAD00DCAD18 /* icon_cancl.png in Resources */,
+				6C81548F167D254400DCAD18 /* MessageCell.xib in Resources */,
+				6C815498167D2A8200DCAD18 /* dialogue_bubble_g.png in Resources */,
+				6C815499167D2A8200DCAD18 /* dialogue_bubble_w.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1668,6 +1690,8 @@
 				7913E771167CE5EF003658AB /* Reachability.m in Sources */,
 				79501517167CF1D200AFFC2F /* BumpManager.m in Sources */,
 				6C81547A167CFC4000DCAD18 /* UITextField+HideKeyBoard.m in Sources */,
+				6C81548D167D252000DCAD18 /* MessageCell.m in Sources */,
+				6C815495167D27E300DCAD18 /* AudioMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
