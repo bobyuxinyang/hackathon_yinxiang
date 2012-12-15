@@ -6,7 +6,10 @@
 //  Copyright (c) 2012年 yuxin. All rights reserved.
 //
 
+#import "define.h"
 #import "RenrenViewController.h"
+#import "ASIFormDataRequest.h"
+#import "XMPPManager.h"
 
 @interface RenrenViewController ()
 {
@@ -120,14 +123,41 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    
+    NSURL *url = [[NSURL alloc] initWithString:API_URL];
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request.delegate = self;
+    
+    [request setPostValue:@"query_xmppid" forKey:@"method"];
+    
+    NSDictionary *p = (NSDictionary *)[peoples objectAtIndex: indexPath.row];
+    
+    [request setPostValue:[p objectForKey: @"uid"] forKey:@"renren_id"];
+    
+    [request startSynchronous];
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    NSData *jsonData = [request responseData];
+    
+    NSLog(@"data\n%@", [request responseString]);
+    
+    NSError *error;
+    
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
+    
+    
+    if ([(NSDictionary *)jsonObject objectForKey:@"xmpp_id"])
+    {
+        NSString *xmpp_id = [(NSDictionary *)jsonObject objectForKey:@"xmpp_id"];
+        [XMPPManager sharedManager].partnerUserId = xmpp_id;
+
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        //error
+    }
 }
 
 
