@@ -25,6 +25,16 @@ static XMPPManager *instance = nil;
     return instance;
 }
 
+@synthesize partnerUserId = _partnerUserId;
+@synthesize myUserId = _myUserId;
+
+- (NSString *)myUserId
+{
+    NSString *xmpp_user_id = [NSString stringWithFormat:@"%@@%@", [UIDevice currentDevice].uniqueIdentifier, XMPP_SERVER];
+    return xmpp_user_id;
+}
+
+
 - (XMPPStream *)xmppStream
 {
     if (_xmppStream == nil) {
@@ -39,14 +49,45 @@ static XMPPManager *instance = nil;
     NSLog(@"Connect to XMPP server");
     // 用自己device ID的xmpp_user_id登陆
 //    self.xmppStream.myJID = [XMPPJID jidWithString:XMPP_USER_ID];
-    NSString *uuidString = [UIDevice currentDevice].uniqueIdentifier;
-    NSString *xmpp_user_id = [NSString stringWithFormat:@"%@@%@", uuidString, XMPP_SERVER];
-    self.xmppStream.myJID = [XMPPJID jidWithString:xmpp_user_id];
+    self.xmppStream.myJID = [XMPPJID jidWithString:self.myUserId];
     self.xmppStream.hostName = XMPP_SERVER;
     NSError *error = nil;
     if (![self.xmppStream connect:&error]) {
         NSLog(@"cant connect %@", XMPP_SERVER);
         abort();
+    }
+}
+
+- (void)sendMessage:(NSString *)message
+{   
+    NSString *toUserId = @"test2@yuxins-macbook-air-2.local";
+    //本地输入框中的信息
+    
+    if (message.length > 0) {
+        
+        //XMPPFramework主要是通过KissXML来生成XML文件
+        //生成<body>文档
+        NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
+//        body = [DDXMLNode cdataElementWithName:@"body" stringValue:message];
+        [body setStringValue:message];
+        
+        //生成XML消息文档
+        NSXMLElement *mes = [NSXMLElement elementWithName:@"message"];
+        //消息类型
+        [mes addAttributeWithName:@"type" stringValue:@"chat"];
+        //发送给谁
+        [mes addAttributeWithName:@"to" stringValue:toUserId];
+        //        [mes addAttributeWithName:@"to" stringValue:[BumpManager shareManager].partnerJid];
+        //由谁发送
+        [mes addAttributeWithName:@"from" stringValue:self.myUserId];
+        //组合
+        [mes addChild:body];
+        
+//        NSLog(@"%@", [mes stringValue]);
+//        NSLog(@"%@", mes);
+        //发送消息
+        [self.xmppStream sendElement:mes];
+        
     }
 }
 
@@ -62,7 +103,7 @@ static XMPPManager *instance = nil;
 //验证通过
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
 {
-    NSLog(@"XMPP Signin Success using %@/%@", XMPP_USER_ID, XMPP_PASSWORD);
+    NSLog(@"XMPP Signin Success using %@/%@", self.xmppStream.myJID.user, XMPP_PASSWORD);
     //发送在线状态
     XMPPPresence *presence = [XMPPPresence presence];
     [[self xmppStream] sendElement:presence];
@@ -92,6 +133,55 @@ static XMPPManager *instance = nil;
             [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPP_CONTROL_SENDAUDIO_NOTIFICATION object:self userInfo:yxSharePackageDic];
         }
     }
+}
+
+
+
+
+- (void)sendControllPause
+{
+    YXSharePackage *package = [[YXSharePackage alloc] init];
+    package.type = YXSharePackageTypePause;
+    [self sendMessage:[package toPackageString]];
+    NSLog(@"send pause");
+}
+- (void)sendControllStart
+{
+    YXSharePackage *package = [[YXSharePackage alloc] init];
+    package.type = YXSharePackageTypeStart;
+    [self sendMessage:[package toPackageString]];
+    NSLog(@"send start");
+}
+- (void)sendControllPrev
+{
+    YXSharePackage *package = [[YXSharePackage alloc] init];
+    package.type = YXSharePackageTypePrev;
+    [self sendMessage:[package toPackageString]];
+    NSLog(@"send prev");    
+}
+
+- (void)sendControllNext
+{
+    YXSharePackage *package = [[YXSharePackage alloc] init];
+    package.type = YXSharePackageTypeNext;
+    [self sendMessage:[package toPackageString]];
+    NSLog(@"send next");        
+}
+
+- (void)sendControllSyncProgressAtIndex:(NSInteger)index
+                            AndDuration:(NSInteger)duration
+{
+    YXSharePackage *package = [[YXSharePackage alloc] init];
+    package.type = YXSharePackageTypeSyncProgress;
+    [package.dictionaryData setValue:[NSNumber numberWithInteger:index] forKey:@"index"];
+    [package.dictionaryData setValue:[NSNumber numberWithInteger:duration] forKey:@"duration"];
+    [self sendMessage:[package toPackageString]];
+    NSLog(@"send sync progress");
+}
+
+- (void)sendControllSendText:(NSString *)text
+{
+   NSLog(@"send send text");                
 }
 
 

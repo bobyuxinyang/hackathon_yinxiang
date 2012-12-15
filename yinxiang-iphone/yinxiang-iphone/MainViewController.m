@@ -10,6 +10,7 @@
 #import "AudioFile.h"
 #import "YXSharePackage.h"
 #import "define.h"
+#import "XMPPManager.h"
 
 @interface MainViewController () {
     NSTimer *timer;
@@ -63,7 +64,8 @@
 
 - (void)generateTimer
 {
-   timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateCurrentTime) userInfo:self.player repeats:YES]; 
+   timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateCurrentTime) userInfo:self.player repeats:YES];
+    [[XMPPManager sharedManager] sendControllSyncProgressAtIndex:self.currentMusicIndex AndDuration:(int)self.player.currentTime];
 }
 
 - (IBAction)prev:(id)sender {
@@ -220,7 +222,9 @@
     NSInteger time = [[package.dictionaryData objectForKey:@"duration"] integerValue];
     timer = nil;
     [self.player setCurrentTime:time];
-    [self generateTimer];
+//    [self generateTimer];
+    // 这里不能再发一条同步消息
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateCurrentTime) userInfo:self.player repeats:YES];
 }
 
 - (void)controlTextInfoReceived:(NSNotification *)noti

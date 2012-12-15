@@ -8,6 +8,7 @@
 
 #import "YXMusicPlayer.h"
 #import "define.h"
+#import "XMPPManager.h"
 
 @implementation YXMusicPlayer
 
@@ -40,6 +41,8 @@
     NSInteger prev_index = (self.index - 1 < 0) ? (self.musicList.count - 1) : (self.index - 1);
     self.index = prev_index;
     [self.player play];
+    
+    [[XMPPManager sharedManager] sendControllPrev];
 }
 
 - (void)next
@@ -47,11 +50,14 @@
     NSInteger next_index = (self.index + 1 >= self.musicList.count) ? 0 : (self.index + 1);
     self.index = next_index;
     [self.player play];
+    
+    [[XMPPManager sharedManager] sendControllNext];
 }
 
 - (void)play
 {
     [self.player play];
+    [[XMPPManager sharedManager] sendControllStart];
 }
 
 - (void)pause
@@ -60,6 +66,7 @@
 	{
 		[self.player pause];
 	}
+    [[XMPPManager sharedManager] sendControllPause];
 }
 
 - (float)duration
