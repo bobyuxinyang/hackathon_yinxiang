@@ -17,8 +17,10 @@
 #define XMPP_PASSWORD @"123456"
 #define XMPP_SERVER @"yuxins-macbook-air-2.local"
 
-#define WEB_SERVER  @"http://127.0.0.1"
-#define API_URL     WEB_SERVER@"/phpsdk/api.php"
+//#define WEB_SERVER  @"http://127.0.0.1"
+//#define API_URL     WEB_SERVER@"/phpsdk/api.php"
+#define WEB_SERVER      @"http://linode.freefcw.com"
+#define API_URL     WEB_SERVER@"/api.php"
 
 // Notification Definitions
 #define YX_XMPP_DATA_RECEIVED_NOTIFICATION @"YX_XMPP_DATA_RECEIVED_NOTIFICATION" // just for test

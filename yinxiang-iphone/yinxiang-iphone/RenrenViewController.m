@@ -10,6 +10,7 @@
 #import "RenrenViewController.h"
 #import "ASIFormDataRequest.h"
 #import "XMPPManager.h"
+#import "BumpViewController.h"
 
 @interface RenrenViewController ()
 {
@@ -153,6 +154,9 @@
     {
         NSString *xmpp_id = [(NSDictionary *)jsonObject objectForKey:@"xmpp_id"];
         [XMPPManager sharedManager].partnerUserId = xmpp_id;
+        
+        BumpViewController *bumpViewController = [self.navigationController.viewControllers objectAtIndex:0];
+        [bumpViewController doConnect];
 
         [self.navigationController popViewControllerAnimated:YES];
     } else {

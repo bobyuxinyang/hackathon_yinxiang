@@ -107,11 +107,16 @@
     NSLog(@"...audio received");        
 }
 
-- (void)bumpSuccessed:(NSNotification *)noti
+- (void)doConnect
 {
     NSLog(@"Bump Success");
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否与Bob`iphone链接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
     [alertView show];
+}
+
+- (void)bumpSuccessed:(NSNotification *)noti
+{
+    [self doConnect];
 }
 
 - (void)viewDidLoad
@@ -188,6 +193,12 @@
     [self.deviceName hideKeyBoard:self.view];
     
     [self fetchDeviceName];
+
+
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navbar_logo.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+
+    [[BumpClient sharedClient] connect];
 }
 
 - (void)didReceiveMemoryWarning
@@ -220,6 +231,8 @@
 - (IBAction)testBump:(id)sender {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否与Bob`iphone链接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
     [alertView show];
+
+    [self doConnect];
 }
 
 #pragma mark -- UIAlertViewDelegate

@@ -14,7 +14,7 @@
 
 @implementation AppDelegate
 @synthesize rootNavigationController = _rootNavigationController;
-//
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[BumpManager shareManager] configureBump];

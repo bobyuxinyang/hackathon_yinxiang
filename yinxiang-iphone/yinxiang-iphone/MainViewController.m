@@ -12,6 +12,7 @@
 #import "AppUtil.h"
 #import "define.h"
 #import "XMPPManager.h"
+#import "BumpClient.h"
 
 @interface MainViewController () {
     NSTimer *timer;
@@ -189,6 +190,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[BumpClient sharedClient] disconnect];
     
     self.deviceName.text = [[NSUserDefaults standardUserDefaults] valueForKey:YXDeviceName];
     
