@@ -13,4 +13,6 @@
 
 @property (retain,nonatomic)Renren *renren;
 
+- (void)doConnect;
+
 @end
