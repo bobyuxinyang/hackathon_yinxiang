@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		121C5F3D167CD30200612A2E /* BumpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 121C5F3C167CD30200612A2E /* BumpManager.m */; };
 		12237C2A167C341B00224B03 /* MusicListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12237C28167C341B00224B03 /* MusicListViewController.m */; };
 		12237C2B167C341B00224B03 /* MusicListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12237C29167C341B00224B03 /* MusicListViewController.xib */; };
 		12237C2F167C36C900224B03 /* MusicItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12237C2E167C36C900224B03 /* MusicItemCell.m */; };
@@ -165,6 +166,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		121C5F3B167CD30200612A2E /* BumpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BumpManager.h; sourceTree = "<group>"; };
+		121C5F3C167CD30200612A2E /* BumpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BumpManager.m; sourceTree = "<group>"; };
 		12237C27167C341B00224B03 /* MusicListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicListViewController.h; sourceTree = "<group>"; };
 		12237C28167C341B00224B03 /* MusicListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicListViewController.m; sourceTree = "<group>"; };
 		12237C29167C341B00224B03 /* MusicListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicListViewController.xib; sourceTree = "<group>"; };
@@ -542,6 +545,8 @@
 			children = (
 				12AB52B5167C9A6500BCC18F /* XMPPManager.h */,
 				12AB52B6167C9A6500BCC18F /* XMPPManager.m */,
+				121C5F3B167CD30200612A2E /* BumpManager.h */,
+				121C5F3C167CD30200612A2E /* BumpManager.m */,
 				6C275326167C4F9F009C4E7F /* Resource */,
 				6C9F214F167C424E00D177C9 /* Cell */,
 				6C9F214D167C424600D177C9 /* Model */,
@@ -1310,6 +1315,7 @@
 				79866FFB167CA90600EEDC57 /* ROImageView.m in Sources */,
 				79866FFC167CA90600EEDC57 /* ROPublishPhotoDialogModel.m in Sources */,
 				79866FFD167CA90600EEDC57 /* ROPublishPhotoInternal.m in Sources */,
+				121C5F3D167CD30200612A2E /* BumpManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
