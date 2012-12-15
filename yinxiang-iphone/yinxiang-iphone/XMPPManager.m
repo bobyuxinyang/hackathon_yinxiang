@@ -79,11 +79,11 @@ static XMPPManager *instance = nil;
         if (receivedPackage.type == YXSharePackageTypePause) {
             [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPP_CONTROL_PAUSE_NOTIFICATION object:self userInfo:yxSharePackageDic];
         } else if (receivedPackage.type == YXSharePackageTypePrev) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPP_CONTROL_PAUSE_NOTIFICATION object:self userInfo:yxSharePackageDic];
+            [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPP_CONTROL_PREV_NOTIFICATION object:self userInfo:yxSharePackageDic];
         } else if (receivedPackage.type == YXSharePackageTypeNext) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPP_CONTROL_START_NOTIFICATION object:self userInfo:yxSharePackageDic];
-        } else if (receivedPackage.type == YXSharePackageTypeStart) {
             [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPP_CONTROL_NEXT_NOTIFICATION object:self userInfo:yxSharePackageDic];
+        } else if (receivedPackage.type == YXSharePackageTypeStart) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPP_CONTROL_START_NOTIFICATION object:self userInfo:yxSharePackageDic];
         } else if (receivedPackage.type == YXSharePackageTypeSyncProgress) {
             [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPP_CONTROL_PROGRESS_NOTIFICATION object:self userInfo:yxSharePackageDic];
         } else if (receivedPackage.type == YXSharePackageTypeSyncSendText) {

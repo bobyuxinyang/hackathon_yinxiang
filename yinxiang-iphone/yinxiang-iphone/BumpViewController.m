@@ -21,6 +21,11 @@
 // just for test
 - (void)getTestSamples
 {
+    // 开始播放
+    YXSharePackage *package0 = [[YXSharePackage alloc] init];
+    package0.type = YXSharePackageTypeStart;
+    NSLog(@"start - %@", [package0 toPackageString]);
+    
     // 暂停播放
     YXSharePackage *package1 = [[YXSharePackage alloc] init];
     package1.type = YXSharePackageTypePause;

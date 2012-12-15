@@ -6,6 +6,8 @@
 //  Copyright (c) 2012年 yuxin. All rights reserved.
 //
 
+//2012-12-15 21:13:15.942 yinxiang-iphone[16286:c07] start -
+//ewogICJiYXNlNjREYXRhIiA6ICIiLAogICJ0eXBlIiA6IDEsCiAgImRpY3Rpb25hcnlEYXRhIiA6IHsKCiAgfQp9
 //
 //2012-12-15 15:13:14.559 yinxiang-iphone[67116:c07] pause -
 //ewogICJiYXNlNjREYXRhIiA6ICIiLAogICJ0eXBlIiA6IDAsCiAgImRpY3Rpb25hcnlEYXRhIiA6IHsKCiAgfQp9
