@@ -66,7 +66,6 @@
     self.selectedRowIndex = [self.deleagte currentMusicIndex];
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -75,7 +74,6 @@
 #pragma mark - tableView datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%d", self.audioList.count);
     return self.audioList.count;
 }
 
@@ -105,14 +103,6 @@
     [self dismissViewControllerAnimated:YES completion:^(void ){
         [self.deleagte didMusiceSelected:self.selectedRowIndex];
     }];
-    
-//    [self showPlayerViewController];
-//    
-//    PlayerViewController *controller = [PlayerViewController sharedInstance];
-//    controller.playMode = kPlayModeCycle;
-//    controller.playedContentType = kPlayedContentIsAllPrograms;
-//    
-//    [controller playPrograms:self.programList inChannel:nil startFromIndex:indexPath.row];
 }
 
 

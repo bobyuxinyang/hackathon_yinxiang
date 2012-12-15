@@ -225,13 +225,9 @@
     RenrenViewController *renrenVC = [[RenrenViewController alloc] initWithNibName:@"RenrenViewController" bundle:nil];
     renrenVC.renren = self.renren;
     [self.navigationController pushViewController:renrenVC animated:YES];
-
 }
 
 - (IBAction)testBump:(id)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否与Bob`iphone链接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
-    [alertView show];
-
     [self doConnect];
 }
 

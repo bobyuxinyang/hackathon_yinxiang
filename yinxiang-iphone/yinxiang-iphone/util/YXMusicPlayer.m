@@ -52,6 +52,10 @@
 - (void)play
 {
     [self.player play];
+    
+    if ([self.delegate respondsToSelector:@selector(handlePlayingStatus)]) {
+        [self.delegate handlePlayingStatus];
+    }
 }
 
 - (void)pause
@@ -59,6 +63,10 @@
     if (self.player.playing == YES)
 	{
 		[self.player pause];
+        
+        if ([self.delegate respondsToSelector:@selector(handlePauseStatus)]) {
+            [self.delegate handlePauseStatus];
+        }
 	}
 }
 

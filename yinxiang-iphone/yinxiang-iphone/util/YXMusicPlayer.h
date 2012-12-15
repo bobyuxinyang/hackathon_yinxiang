@@ -11,14 +11,14 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AudioFile.h"
 
-@protocol MusicPlaeyerDeleagate;
+@protocol MusicPlayerDeleagate;
 
 @interface YXMusicPlayer : NSObject <AVAudioPlayerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *musicList;
 @property (nonatomic) NSInteger index;
 @property (nonatomic, strong) AVAudioPlayer *player;
-@property (nonatomic, strong) id<MusicPlaeyerDeleagate> delegate;
+@property (nonatomic, strong) id<MusicPlayerDeleagate> delegate;
 
 @property (nonatomic) float duration;
 @property (nonatomic, strong) NSString *durationStr;
@@ -34,6 +34,9 @@
 
 @end
 
-@protocol MusicPlaeyerDeleagate <NSObject>;
+@protocol MusicPlayerDeleagate <NSObject>;
 - (void)fetchCurrentPlayingMusicInfo: (AudioFile *)audio;
+@optional
+- (void)handlePlayingStatus;
+- (void)handlePauseStatus;
 @end

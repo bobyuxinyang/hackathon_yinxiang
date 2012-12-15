@@ -76,8 +76,14 @@
    timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateCurrentTime) userInfo:self.player repeats:YES];
 }
 
+- (void)showPauseBtn
+{
+    
+}
+
 - (IBAction)prev:(id)sender {
     [self.player prev];
+    
     [[XMPPManager sharedManager] sendControllPrev];    
 }
 
@@ -85,9 +91,6 @@
     [self.player play];
     //timer
     [self generateTimer];
-
-    self.playBtn.alpha = 0.0f;
-    self.pauseBtn.alpha = 1.0f;
 
     [[XMPPManager sharedManager] sendControllStart];    
 }
@@ -97,9 +100,6 @@
     [self.player pause];
     //timer;
     timer = nil;
-
-    self.playBtn.alpha = 1.0f;
-    self.pauseBtn.alpha = 0.0f;
 
     [[XMPPManager sharedManager] sendControllPause];    
 }
@@ -190,7 +190,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[BumpClient sharedClient] disconnect];
+//    [[BumpClient sharedClient] disconnect];
     
     self.deviceName.text = [[NSUserDefaults standardUserDefaults] valueForKey:YXDeviceName];
     
@@ -271,7 +271,7 @@
     NSInteger index = [[package.dictionaryData objectForKey:@"index"] integerValue];
     NSInteger time = [[package.dictionaryData objectForKey:@"duration"] integerValue];
     
-    if (index == self.currentMusicIndex) {
+    if (index == self.player.index) {
         //调整播放进度
         timer = nil;
         [self.player setCurrentTime:time];
@@ -281,6 +281,7 @@
         //跳转到第index首歌
         [AppUtil showGoToIndexHud:index];
         self.player.index = index;
+        [self.player play];
     }
 }
 
@@ -310,7 +311,6 @@
 #pragma mark -- MusicSelectedDeleagate
 - (void)didMusiceSelected:(NSInteger)index
 {
-    NSLog(@"%d", index);
     self.player.index = index;
     [self.player play];
 }
@@ -321,6 +321,18 @@
     self.musicCover.image = audio.coverImage;
     self.titleText.text = [NSString stringWithFormat:@"%@ - %@", audio.artist, audio.title, nil];
     self.durationText.text = audio.durationInMinutes;
+}
+
+- (void)handlePauseStatus
+{
+    self.playBtn.alpha = 1.0f;
+    self.pauseBtn.alpha = 0.0f;
+}
+
+- (void)handlePlayingStatus
+{
+    self.playBtn.alpha = 0.0f;
+    self.pauseBtn.alpha = 1.0f;
 }
 
 @end

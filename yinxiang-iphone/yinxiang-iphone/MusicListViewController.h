@@ -13,7 +13,7 @@
 @interface MusicListViewController : UIViewController <UITableViewDataSource, UITabBarDelegate>;
 
 @property (nonatomic, strong) NSMutableArray *audioList;
-@property (nonatomic, strong) id<MusicSelectedDeleagate> deleagte;
+@property (nonatomic, assign) id<MusicSelectedDeleagate> deleagte;
 
 @end
 

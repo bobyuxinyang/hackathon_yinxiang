@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "XMPPManager.h"
 #import "BumpViewController.h"
-#import "AppUtil.h"
 #import "BumpManager.h"
 
 @implementation AppDelegate

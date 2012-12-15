@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppUtil.h"
 
 @class BumpViewController;
 
@@ -15,6 +16,6 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) BumpViewController *viewController;
-@property (strong, nonatomic) UINavigationController *rootNavigationController;
+@property (strong, nonatomic) YXNavigationController *rootNavigationController;
 
 @end
