@@ -10,6 +10,7 @@
 #import "RenrenViewController.h"
 #import "MainViewController.h"
 #import "YXSharePackage.h"
+#import "define.h"
 
 @interface BumpViewController () <UIAlertViewDelegate>
 
@@ -17,7 +18,7 @@
 
 @implementation BumpViewController
 
-
+// just for test
 - (void)getTestSamples
 {
     // 暂停播放
@@ -50,6 +51,47 @@
     
 }
 
+- (void)controlPauseReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...pause");
+}
+- (void)controlStartReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...start");    
+}
+
+- (void)controlNextReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...next");
+}
+
+- (void)controlPrevReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...prev");    
+}
+
+- (void)controlProgressReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...progress sync");
+}
+
+- (void)controlTextInfoReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...text received");    
+}
+
+- (void)controlAudioInfoReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...audio received");        
+}
+
 
 - (void)viewDidLoad
 {
@@ -58,6 +100,34 @@
     
     // just for test
     [self getTestSamples];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlPauseReceived:)
+                                                 name:YX_XMPP_CONTROL_PAUSE_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlStartReceived:)
+                                                 name:YX_XMPP_CONTROL_START_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlNextReceived:)
+                                                 name:YX_XMPP_CONTROL_NEXT_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlPrevReceived:)
+                                                 name:YX_XMPP_CONTROL_PREV_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlProgressReceived:)
+                                                 name:YX_XMPP_CONTROL_PROGRESS_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlTextInfoReceived:)
+                                                 name:YX_XMPP_CONTROL_SENDTEXT_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlAudioInfoReceived:)
+                                                 name:YX_XMPP_CONTROL_SENDAUDIO_NOTIFICATION
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning

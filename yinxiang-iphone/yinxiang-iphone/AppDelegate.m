@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "XMPPManager.h"
 #import "BumpViewController.h"
 
 @implementation AppDelegate
@@ -15,6 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[XMPPManager sharedManager] connectXMPP];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     

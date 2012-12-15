@@ -62,6 +62,9 @@
     
     NSError *error = nil;
     NSMutableDictionary *packageDic = (NSMutableDictionary *)[NSJSONSerialization JSONObjectWithData:theData options:NSJSONReadingMutableContainers error:&error];
+    if(error != nil) {
+        return nil;
+    }
     
     YXSharePackage *package = [[YXSharePackage alloc] init];
     package.type = [[packageDic objectForKey:@"type"] intValue];
