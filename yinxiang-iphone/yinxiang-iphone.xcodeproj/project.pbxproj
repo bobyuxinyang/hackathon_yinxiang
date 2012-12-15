@@ -117,6 +117,7 @@
 		7913E773167CE695003658AB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7913E772167CE695003658AB /* SystemConfiguration.framework */; };
 		7913E775167CE6A1003658AB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7913E774167CE6A1003658AB /* MobileCoreServices.framework */; };
 		7913E777167CE6B2003658AB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7913E776167CE6B2003658AB /* libz.dylib */; };
+		79501517167CF1D200AFFC2F /* BumpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79501516167CF1D200AFFC2F /* BumpManager.m */; };
 		79866FB8167CA90600EEDC57 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 79866F30167CA90600EEDC57 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		79866FB9167CA90600EEDC57 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 79866F32167CA90600EEDC57 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		79866FBA167CA90600EEDC57 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 79866F34167CA90600EEDC57 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -389,6 +390,8 @@
 		7913E772167CE695003658AB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7913E774167CE6A1003658AB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		7913E776167CE6B2003658AB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		79501515167CF1D200AFFC2F /* BumpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BumpManager.h; sourceTree = "<group>"; };
+		79501516167CF1D200AFFC2F /* BumpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BumpManager.m; sourceTree = "<group>"; };
 		79866F2F167CA90600EEDC57 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		79866F30167CA90600EEDC57 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		79866F31167CA90600EEDC57 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -630,6 +633,8 @@
 			children = (
 				12AB52B5167C9A6500BCC18F /* XMPPManager.h */,
 				12AB52B6167C9A6500BCC18F /* XMPPManager.m */,
+				79501515167CF1D200AFFC2F /* BumpManager.h */,
+				79501516167CF1D200AFFC2F /* BumpManager.m */,
 				6C275326167C4F9F009C4E7F /* Resource */,
 				6C9F214F167C424E00D177C9 /* Cell */,
 				6C9F214D167C424600D177C9 /* Model */,
@@ -1510,6 +1515,7 @@
 				7913E75C167CDD4E003658AB /* ASIS3Request.m in Sources */,
 				7913E75D167CDD4E003658AB /* ASIS3ServiceRequest.m in Sources */,
 				7913E771167CE5EF003658AB /* Reachability.m in Sources */,
+				79501517167CF1D200AFFC2F /* BumpManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

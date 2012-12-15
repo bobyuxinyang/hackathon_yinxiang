@@ -9,12 +9,14 @@
 #import "AppDelegate.h"
 #import "XMPPManager.h"
 #import "BumpViewController.h"
+#import "BumpManager.h"
 
 @implementation AppDelegate
 @synthesize rootNavigationController = _rootNavigationController;
-
+//
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[BumpManager shareManager] configureBump];
     [[XMPPManager sharedManager] connectXMPP];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

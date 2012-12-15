@@ -13,6 +13,7 @@
 #import "define.h"
 #import "XMPPManager.h"
 #import "ASIFormDataRequest.h"
+#import "BumpClient.h"
 
 @interface BumpViewController () <UIAlertViewDelegate>
 
@@ -103,43 +104,51 @@
     NSLog(@"...audio received");        
 }
 
+- (void)bumpSuccessed:(NSNotification *)noti
+{
+    NSLog(@"Bump Success");
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否与xxx的iphone链接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
+    [alertView show];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    // just for test
-    [self getTestSamples];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlPauseReceived:)
-                                                 name:YX_XMPP_CONTROL_PAUSE_NOTIFICATION
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlStartReceived:)
-                                                 name:YX_XMPP_CONTROL_START_NOTIFICATION
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlNextReceived:)
-                                                 name:YX_XMPP_CONTROL_NEXT_NOTIFICATION
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlPrevReceived:)
-                                                 name:YX_XMPP_CONTROL_PREV_NOTIFICATION
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlProgressReceived:)
-                                                 name:YX_XMPP_CONTROL_PROGRESS_NOTIFICATION
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlTextInfoReceived:)
-                                                 name:YX_XMPP_CONTROL_SENDTEXT_NOTIFICATION
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlAudioInfoReceived:)
-                                                 name:YX_XMPP_CONTROL_SENDAUDIO_NOTIFICATION
-                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bumpSuccessed:) name:YX_XMPPPartnerIdReceivedNotification object:nil];
     
+    // just for test
+//    [self getTestSamples];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlPauseReceived:)
+//                                                 name:YX_XMPP_CONTROL_PAUSE_NOTIFICATION
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlStartReceived:)
+//                                                 name:YX_XMPP_CONTROL_START_NOTIFICATION
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlNextReceived:)
+//                                                 name:YX_XMPP_CONTROL_NEXT_NOTIFICATION
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlPrevReceived:)
+//                                                 name:YX_XMPP_CONTROL_PREV_NOTIFICATION
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlProgressReceived:)
+//                                                 name:YX_XMPP_CONTROL_PROGRESS_NOTIFICATION
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlTextInfoReceived:)
+//                                                 name:YX_XMPP_CONTROL_SENDTEXT_NOTIFICATION
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlAudioInfoReceived:)
+//                                                 name:YX_XMPP_CONTROL_SENDAUDIO_NOTIFICATION
+//                                               object:nil];
+//    
     self.renren = [Renren sharedRenren];
 
 }
@@ -252,6 +261,10 @@
     
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:errorCode message:errorMsg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
+}
+
+- (IBAction)simulateBump:(id)sender {
+    [[BumpClient sharedClient] simulateBump];
 }
 
 @end

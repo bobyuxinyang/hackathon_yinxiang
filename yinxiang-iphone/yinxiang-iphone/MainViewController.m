@@ -65,17 +65,18 @@
 - (void)generateTimer
 {
    timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateCurrentTime) userInfo:self.player repeats:YES];
-    [[XMPPManager sharedManager] sendControllSyncProgressAtIndex:self.currentMusicIndex AndDuration:(int)self.player.currentTime];
 }
 
 - (IBAction)prev:(id)sender {
     [self.player prev];
+    [[XMPPManager sharedManager] sendControllPrev];    
 }
 
 - (IBAction)play:(id)sender {
     [self.player play];
     //timer
     [self generateTimer];
+    [[XMPPManager sharedManager] sendControllStart];    
 }
 
 
@@ -83,11 +84,13 @@
     [self.player pause];
     //timer;
     timer = nil;
+    [[XMPPManager sharedManager] sendControllPause];    
 }
 
 
 - (IBAction)next:(id)sender {
     [self.player next];
+    [[XMPPManager sharedManager] sendControllNext];    
 }
 
 
@@ -97,10 +100,12 @@
 
 - (IBAction)slideTouchUpInside:(id)sender {
     [self generateTimer];
+    [[XMPPManager sharedManager] sendControllSyncProgressAtIndex:self.currentMusicIndex AndDuration:(int)self.player.currentTime];    
 }
 
 - (IBAction)slideTouchUpOutside:(id)sender {
-     [self generateTimer];   
+     [self generateTimer];
+     [[XMPPManager sharedManager] sendControllSyncProgressAtIndex:self.currentMusicIndex AndDuration:(int)self.player.currentTime];    
 }
 
 - (IBAction)handleSliderChanged:(id)sender {
@@ -222,9 +227,7 @@
     NSInteger time = [[package.dictionaryData objectForKey:@"duration"] integerValue];
     timer = nil;
     [self.player setCurrentTime:time];
-//    [self generateTimer];
-    // 这里不能再发一条同步消息
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateCurrentTime) userInfo:self.player repeats:YES];
+    [self generateTimer];
 }
 
 - (void)controlTextInfoReceived:(NSNotification *)noti

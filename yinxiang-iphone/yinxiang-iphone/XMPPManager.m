@@ -60,9 +60,7 @@ static XMPPManager *instance = nil;
 
 - (void)sendMessage:(NSString *)message
 {   
-    NSString *toUserId = @"test2@yuxins-macbook-air-2.local";
-    //本地输入框中的信息
-    
+    //本地输入框中的信息    
     if (message.length > 0) {
         
         //XMPPFramework主要是通过KissXML来生成XML文件
@@ -76,7 +74,7 @@ static XMPPManager *instance = nil;
         //消息类型
         [mes addAttributeWithName:@"type" stringValue:@"chat"];
         //发送给谁
-        [mes addAttributeWithName:@"to" stringValue:toUserId];
+        [mes addAttributeWithName:@"to" stringValue:[[XMPPManager sharedManager] partnerUserId]];
         //        [mes addAttributeWithName:@"to" stringValue:[BumpManager shareManager].partnerJid];
         //由谁发送
         [mes addAttributeWithName:@"from" stringValue:self.myUserId];
