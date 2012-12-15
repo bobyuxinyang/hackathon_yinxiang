@@ -72,14 +72,14 @@
 		12AB534B167C9ACF00BCC18F /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AB534A167C9ACF00BCC18F /* libxml2.dylib */; };
 		12AB534D167C9AD300BCC18F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AB534C167C9AD300BCC18F /* Security.framework */; };
 		12AB534F167C9ADB00BCC18F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AB534E167C9ADB00BCC18F /* CoreLocation.framework */; };
+		12CEB35D167D0F1700D3CAFC /* Eye Of The Tiger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12CEB35A167D0F1700D3CAFC /* Eye Of The Tiger.jpg */; };
+		12CEB35E167D0F1700D3CAFC /* Let It Be.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12CEB35B167D0F1700D3CAFC /* Let It Be.jpg */; };
+		12CEB35F167D0F1700D3CAFC /* 屋顶.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12CEB35C167D0F1700D3CAFC /* 屋顶.jpg */; };
 		6C1589D0167CC2F1008FB34D /* AppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1589CF167CC2F1008FB34D /* AppUtil.m */; };
 		6C27531D167C47C1009C4E7F /* AudioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C27531C167C47C1009C4E7F /* AudioCell.xib */; };
 		6C275321167C47E2009C4E7F /* AudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C275320167C47E2009C4E7F /* AudioCell.m */; };
 		6C27532D167C4FE6009C4E7F /* Eye Of The Tiger.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6C275327167C4FE6009C4E7F /* Eye Of The Tiger.mp3 */; };
-		6C27532E167C4FE6009C4E7F /* Eye of the tiger.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C275328167C4FE6009C4E7F /* Eye of the tiger.png */; };
-		6C27532F167C4FE6009C4E7F /* Let It Be.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6C275329167C4FE6009C4E7F /* Let It Be.jpg */; };
 		6C275330167C4FE6009C4E7F /* Let It Be.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6C27532A167C4FE6009C4E7F /* Let It Be.mp3 */; };
-		6C275331167C4FE6009C4E7F /* 屋顶.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6C27532B167C4FE6009C4E7F /* 屋顶.jpg */; };
 		6C275332167C4FE6009C4E7F /* 屋顶.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6C27532C167C4FE6009C4E7F /* 屋顶.mp3 */; };
 		6C27533A167C58B8009C4E7F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C275339167C58B8009C4E7F /* AVFoundation.framework */; };
 		6C27533C167C58CC009C4E7F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C27533B167C58CC009C4E7F /* QuartzCore.framework */; };
@@ -352,16 +352,16 @@
 		12AB534A167C9ACF00BCC18F /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		12AB534C167C9AD300BCC18F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		12AB534E167C9ADB00BCC18F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		12CEB35A167D0F1700D3CAFC /* Eye Of The Tiger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Eye Of The Tiger.jpg"; path = "Resource/Eye Of The Tiger.jpg"; sourceTree = "<group>"; };
+		12CEB35B167D0F1700D3CAFC /* Let It Be.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Let It Be.jpg"; path = "Resource/Let It Be.jpg"; sourceTree = "<group>"; };
+		12CEB35C167D0F1700D3CAFC /* 屋顶.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "屋顶.jpg"; path = "Resource/屋顶.jpg"; sourceTree = "<group>"; };
 		6C1589CE167CC2F1008FB34D /* AppUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppUtil.h; path = util/AppUtil.h; sourceTree = "<group>"; };
 		6C1589CF167CC2F1008FB34D /* AppUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppUtil.m; path = util/AppUtil.m; sourceTree = "<group>"; };
 		6C27531C167C47C1009C4E7F /* AudioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioCell.xib; sourceTree = "<group>"; };
 		6C27531F167C47E2009C4E7F /* AudioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioCell.h; path = Cell/AudioCell.h; sourceTree = "<group>"; };
 		6C275320167C47E2009C4E7F /* AudioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioCell.m; path = Cell/AudioCell.m; sourceTree = "<group>"; };
 		6C275327167C4FE6009C4E7F /* Eye Of The Tiger.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Eye Of The Tiger.mp3"; path = "Resource/Eye Of The Tiger.mp3"; sourceTree = "<group>"; };
-		6C275328167C4FE6009C4E7F /* Eye of the tiger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Eye of the tiger.png"; path = "Resource/Eye of the tiger.png"; sourceTree = "<group>"; };
-		6C275329167C4FE6009C4E7F /* Let It Be.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Let It Be.jpg"; path = "Resource/Let It Be.jpg"; sourceTree = "<group>"; };
 		6C27532A167C4FE6009C4E7F /* Let It Be.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Let It Be.mp3"; path = "Resource/Let It Be.mp3"; sourceTree = "<group>"; };
-		6C27532B167C4FE6009C4E7F /* 屋顶.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "屋顶.jpg"; path = "Resource/屋顶.jpg"; sourceTree = "<group>"; };
 		6C27532C167C4FE6009C4E7F /* 屋顶.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "屋顶.mp3"; path = "Resource/屋顶.mp3"; sourceTree = "<group>"; };
 		6C275339167C58B8009C4E7F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6C27533B167C58CC009C4E7F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1012,11 +1012,11 @@
 			children = (
 				6C815425167CC94E00DCAD18 /* image */,
 				6C275327167C4FE6009C4E7F /* Eye Of The Tiger.mp3 */,
-				6C275328167C4FE6009C4E7F /* Eye of the tiger.png */,
-				6C275329167C4FE6009C4E7F /* Let It Be.jpg */,
 				6C27532A167C4FE6009C4E7F /* Let It Be.mp3 */,
-				6C27532B167C4FE6009C4E7F /* 屋顶.jpg */,
 				6C27532C167C4FE6009C4E7F /* 屋顶.mp3 */,
+				12CEB35A167D0F1700D3CAFC /* Eye Of The Tiger.jpg */,
+				12CEB35B167D0F1700D3CAFC /* Let It Be.jpg */,
+				12CEB35C167D0F1700D3CAFC /* 屋顶.jpg */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -1492,10 +1492,7 @@
 				12237C31167C36E100224B03 /* MusicItemCell.xib in Resources */,
 				6C27531D167C47C1009C4E7F /* AudioCell.xib in Resources */,
 				6C27532D167C4FE6009C4E7F /* Eye Of The Tiger.mp3 in Resources */,
-				6C27532E167C4FE6009C4E7F /* Eye of the tiger.png in Resources */,
-				6C27532F167C4FE6009C4E7F /* Let It Be.jpg in Resources */,
 				6C275330167C4FE6009C4E7F /* Let It Be.mp3 in Resources */,
-				6C275331167C4FE6009C4E7F /* 屋顶.jpg in Resources */,
 				6C275332167C4FE6009C4E7F /* 屋顶.mp3 in Resources */,
 				12AB533B167C9A8E00BCC18F /* README.txt in Resources */,
 				12AB5340167C9A8E00BCC18F /* build-libidn.sh in Resources */,
@@ -1552,6 +1549,9 @@
 				6C81548F167D254400DCAD18 /* MessageCell.xib in Resources */,
 				6C815498167D2A8200DCAD18 /* dialogue_bubble_g.png in Resources */,
 				6C815499167D2A8200DCAD18 /* dialogue_bubble_w.png in Resources */,
+				12CEB35D167D0F1700D3CAFC /* Eye Of The Tiger.jpg in Resources */,
+				12CEB35E167D0F1700D3CAFC /* Let It Be.jpg in Resources */,
+				12CEB35F167D0F1700D3CAFC /* 屋顶.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
