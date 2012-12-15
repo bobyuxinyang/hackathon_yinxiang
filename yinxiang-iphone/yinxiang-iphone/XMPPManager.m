@@ -51,6 +51,7 @@ static XMPPManager *instance = nil;
 //    self.xmppStream.myJID = [XMPPJID jidWithString:XMPP_USER_ID];
     self.xmppStream.myJID = [XMPPJID jidWithString:self.myUserId];
     self.xmppStream.hostName = XMPP_SERVER;
+//    self.xmppStream.hostName = @"192.168.5.112";
     NSError *error = nil;
     if (![self.xmppStream connect:&error]) {
         NSLog(@"cant connect %@", XMPP_SERVER);
