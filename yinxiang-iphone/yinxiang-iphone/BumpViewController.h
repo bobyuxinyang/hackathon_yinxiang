@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BumpViewController : UIViewController
+@interface BumpViewController : UIViewController <RenrenDelegate>
+
+@property (retain,nonatomic)Renren *renren;
 
 @end
