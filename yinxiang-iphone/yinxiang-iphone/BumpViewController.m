@@ -11,6 +11,8 @@
 #import "MainViewController.h"
 #import "YXSharePackage.h"
 #import "define.h"
+#import "XMPPManager.h"
+#import "ASIFormDataRequest.h"
 #import "BumpClient.h"
 
 @interface BumpViewController () <UIAlertViewDelegate>
@@ -171,6 +173,7 @@
 - (IBAction)loginUsingRenren:(id)sender {
 
 //    NSLog(@"time: %@", [NSString stringWithFormat:@"%d", (int)[self.renren.expirationDate timeIntervalSince1970]]);
+    
 	if ([self.renren isSessionValid]) {
         [self showRenrenFriends];
 	} else {
@@ -212,23 +215,41 @@
 //    NSLog(@"secret          :%@", renren.secret);
 //    NSLog(@"sessionKey      :%@", renren.sessionKey);
 //    NSLog(@"expirationDate  :%@", renren.expirationDate);
-    
-    NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
-    
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    // get logged in user id (NSNumber)
-    // notice: it's may wrong
-    
-    [postData setValue:[defaults objectForKey:@"session_UserId"] forKey:@"renren_id"];
-    [postData setValue:renren.accessToken forKey:@"accessToken"];
-    [postData setValue:[NSString stringWithFormat:@"%d", (int)[renren.expirationDate timeIntervalSince1970]] forKey:@"expires_at"];
-    [postData setValue:@"" forKey:@"deviceid"];
-    [postData setValue:@"" forKey:@"xmpp_id"];
-    
-    //TODO: register
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(postUserData)
+                                                 name:@"kNotificationDidGetLoggedInUserId"
+                                               object:nil];
 
     // show friends
     [self showRenrenFriends];
+}
+
+- (void)postUserData
+{
+    NSURL *url = [[NSURL alloc] initWithString:API_URL];
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request.delegate = self;
+    
+    [request setPostValue:@"new_user" forKey:@"method"];
+    
+    // get logged in user id (NSNumber)
+    // notice: it's may case error
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [request setPostValue:[defaults objectForKey:@"session_UserId"] forKey:@"renren_id"];
+    
+    [request setPostValue:[XMPPManager sharedManager].myUserId forKey:@"xmpp_id"];
+    
+    [request setPostValue:self.renren.accessToken forKey:@"accessToken"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", (int)[self.renren.expirationDate timeIntervalSince1970]] forKey:@"expires_at"];
+    
+    [request startAsynchronous];
+
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{    
+    NSLog(@"data\n%@", [request responseString]);
 }
 
 - (void)renrenDialogDidCancel:(Renren *)renren
