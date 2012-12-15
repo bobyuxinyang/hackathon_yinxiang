@@ -106,6 +106,8 @@ static XMPPManager *instance = nil;
     //发送在线状态
     XMPPPresence *presence = [XMPPPresence presence];
     [[self xmppStream] sendElement:presence];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPP_SERVER_CONNECTED object:self];
 }
 
 //收到消息

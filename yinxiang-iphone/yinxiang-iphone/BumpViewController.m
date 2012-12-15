@@ -19,6 +19,8 @@
 @interface BumpViewController () <UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *deviceName;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel1;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel2;
 
 @end
 
@@ -119,12 +121,35 @@
     [self doConnect];
 }
 
+- (void)xmppServerConnected:(NSNotification *)noti
+{
+    self.statusLabel1.hidden = YES;
+}
+
+- (void)bumpServerConnected:(NSNotification *)noti
+{
+    self.statusLabel2.hidden = YES;
+}
+
+- (void)bumpServerDisconnected:(NSNotification *)noti
+{
+    self.statusLabel2.hidden = NO;
+    [[BumpClient sharedClient] connect];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bumpSuccessed:) name:YX_XMPPPartnerIdReceivedNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(xmppServerConnected:) name:YX_XMPP_SERVER_CONNECTED object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bumpServerConnected:) name:YX_BUMP_SERVER_CONNECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bumpServerDisconnected:) name:YX_BUMP_SERVER_DISCONNECTED object:nil];
+
     
     // just for test
 //    [self getTestSamples];

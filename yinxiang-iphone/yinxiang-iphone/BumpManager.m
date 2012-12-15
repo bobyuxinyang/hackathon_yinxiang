@@ -62,8 +62,10 @@ static BumpManager *instance = nil;
     [[BumpClient sharedClient] setConnectionStateChangedBlock:^(BOOL connected) {
         if (connected) {
             NSLog(@"Bump connected...");
+            [[NSNotificationCenter defaultCenter] postNotificationName:YX_BUMP_SERVER_CONNECTED object:self];
         } else {
             NSLog(@"Bump disconnected...");
+            [[NSNotificationCenter defaultCenter] postNotificationName:YX_BUMP_SERVER_DISCONNECTED object:self];
         }
     }];
     
