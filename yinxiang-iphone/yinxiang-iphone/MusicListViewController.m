@@ -48,6 +48,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     //footer
     UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView setTableFooterView:v];
@@ -55,11 +60,9 @@
     //separator
     self.tableView.separatorColor = [UIColor colorWithRed:79/255 green:136/255 blue:136/255 alpha:1.0];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+    
+    self.view.backgroundColor = [UIColor colorWithRed:242.0f/255.0f green:250.0f/255.0f blue:251.0f/255.0f alpha:1.0f];
+    
     self.selectedRowIndex = [self.deleagte currentMusicIndex];
 }
 

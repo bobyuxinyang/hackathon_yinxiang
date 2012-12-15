@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		121C5F3D167CD30200612A2E /* BumpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 121C5F3C167CD30200612A2E /* BumpManager.m */; };
 		12237C2A167C341B00224B03 /* MusicListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12237C28167C341B00224B03 /* MusicListViewController.m */; };
 		12237C2B167C341B00224B03 /* MusicListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12237C29167C341B00224B03 /* MusicListViewController.xib */; };
 		12237C2F167C36C900224B03 /* MusicItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12237C2E167C36C900224B03 /* MusicItemCell.m */; };
@@ -105,7 +106,6 @@
 		6C815443167CDA4A00DCAD18 /* musiccontrol_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C81543F167CDA4A00DCAD18 /* musiccontrol_pause.png */; };
 		6C815444167CDA4A00DCAD18 /* musiccontrol_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815440167CDA4A00DCAD18 /* musiccontrol_play.png */; };
 		6C815445167CDA4A00DCAD18 /* musiccontrol_previous.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815441167CDA4A00DCAD18 /* musiccontrol_previous.png */; };
-		6C815447167CDC6800DCAD18 /* table-02_b_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815446167CDC6800DCAD18 /* table-02_b_normal.png */; };
 		6C815449167CDCAC00DCAD18 /* speak_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815448167CDCAC00DCAD18 /* speak_bg.png */; };
 		6C81544C167CDCE300DCAD18 /* speak_btn_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C81544A167CDCE200DCAD18 /* speak_btn_normal.png */; };
 		6C81544D167CDCE300DCAD18 /* speak_btn_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C81544B167CDCE200DCAD18 /* speak_btn_select.png */; };
@@ -115,6 +115,8 @@
 		6C815455167CE1C600DCAD18 /* radio_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815453167CE1C500DCAD18 /* radio_select.png */; };
 		6C815457167CE4A900DCAD18 /* musiccontrol_progress_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815456167CE4A900DCAD18 /* musiccontrol_progress_full.png */; };
 		6C81545F167CE81E00DCAD18 /* musiccontrol_key.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C81545E167CE81D00DCAD18 /* musiccontrol_key.png */; };
+		6C815465167CEB3A00DCAD18 /* navbar_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815464167CEB3A00DCAD18 /* navbar_logo.png */; };
+		6C815468167CEBA300DCAD18 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815467167CEBA300DCAD18 /* background.png */; };
 		6C9F2154167C430F00D177C9 /* AudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9F2153167C430F00D177C9 /* AudioFile.m */; };
 		6C9F2156167C460800D177C9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C9F2155167C460800D177C9 /* AudioToolbox.framework */; };
 		79866FB8167CA90600EEDC57 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 79866F30167CA90600EEDC57 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -191,6 +193,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		121C5F3B167CD30200612A2E /* BumpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BumpManager.h; sourceTree = "<group>"; };
+		121C5F3C167CD30200612A2E /* BumpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BumpManager.m; sourceTree = "<group>"; };
 		12237C27167C341B00224B03 /* MusicListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicListViewController.h; sourceTree = "<group>"; };
 		12237C28167C341B00224B03 /* MusicListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicListViewController.m; sourceTree = "<group>"; };
 		12237C29167C341B00224B03 /* MusicListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicListViewController.xib; sourceTree = "<group>"; };
@@ -350,7 +354,6 @@
 		6C81543F167CDA4A00DCAD18 /* musiccontrol_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musiccontrol_pause.png; sourceTree = "<group>"; };
 		6C815440167CDA4A00DCAD18 /* musiccontrol_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musiccontrol_play.png; sourceTree = "<group>"; };
 		6C815441167CDA4A00DCAD18 /* musiccontrol_previous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musiccontrol_previous.png; sourceTree = "<group>"; };
-		6C815446167CDC6800DCAD18 /* table-02_b_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table-02_b_normal.png"; sourceTree = "<group>"; };
 		6C815448167CDCAC00DCAD18 /* speak_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speak_bg.png; sourceTree = "<group>"; };
 		6C81544A167CDCE200DCAD18 /* speak_btn_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speak_btn_normal.png; sourceTree = "<group>"; };
 		6C81544B167CDCE200DCAD18 /* speak_btn_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speak_btn_select.png; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 		6C815453167CE1C500DCAD18 /* radio_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_select.png; sourceTree = "<group>"; };
 		6C815456167CE4A900DCAD18 /* musiccontrol_progress_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musiccontrol_progress_full.png; sourceTree = "<group>"; };
 		6C81545E167CE81D00DCAD18 /* musiccontrol_key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musiccontrol_key.png; sourceTree = "<group>"; };
+		6C815464167CEB3A00DCAD18 /* navbar_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar_logo.png; sourceTree = "<group>"; };
+		6C815467167CEBA300DCAD18 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		6C9F2152167C430F00D177C9 /* AudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioFile.h; path = Model/AudioFile.h; sourceTree = "<group>"; };
 		6C9F2153167C430F00D177C9 /* AudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioFile.m; path = Model/AudioFile.m; sourceTree = "<group>"; };
 		6C9F2155167C460800D177C9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -599,6 +604,8 @@
 			children = (
 				12AB52B5167C9A6500BCC18F /* XMPPManager.h */,
 				12AB52B6167C9A6500BCC18F /* XMPPManager.m */,
+				121C5F3B167CD30200612A2E /* BumpManager.h */,
+				121C5F3C167CD30200612A2E /* BumpManager.m */,
 				6C275326167C4F9F009C4E7F /* Resource */,
 				6C9F214F167C424E00D177C9 /* Cell */,
 				6C9F214D167C424600D177C9 /* Model */,
@@ -914,6 +921,8 @@
 		6C815425167CC94E00DCAD18 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				6C815467167CEBA300DCAD18 /* background.png */,
+				6C815464167CEB3A00DCAD18 /* navbar_logo.png */,
 				6C815432167CD7C400DCAD18 /* pop_next.png */,
 				6C81543A167CD8E600DCAD18 /* navbar_l.png */,
 				6C815433167CD7C400DCAD18 /* pop_pause.png */,
@@ -929,7 +938,6 @@
 				6C81542E167CD32E00DCAD18 /* nav_line.png */,
 				6C81542C167CCDF800DCAD18 /* nav_icon_ok.png */,
 				6C81545E167CE81D00DCAD18 /* musiccontrol_key.png */,
-				6C815446167CDC6800DCAD18 /* table-02_b_normal.png */,
 				6C81544A167CDCE200DCAD18 /* speak_btn_normal.png */,
 				6C815452167CE1C500DCAD18 /* radio_normal.png */,
 				6C815453167CE1C500DCAD18 /* radio_select.png */,
@@ -1313,7 +1321,6 @@
 				6C815443167CDA4A00DCAD18 /* musiccontrol_pause.png in Resources */,
 				6C815444167CDA4A00DCAD18 /* musiccontrol_play.png in Resources */,
 				6C815445167CDA4A00DCAD18 /* musiccontrol_previous.png in Resources */,
-				6C815447167CDC6800DCAD18 /* table-02_b_normal.png in Resources */,
 				6C815449167CDCAC00DCAD18 /* speak_bg.png in Resources */,
 				6C81544C167CDCE300DCAD18 /* speak_btn_normal.png in Resources */,
 				6C81544D167CDCE300DCAD18 /* speak_btn_select.png in Resources */,
@@ -1323,6 +1330,8 @@
 				6C815455167CE1C600DCAD18 /* radio_select.png in Resources */,
 				6C815457167CE4A900DCAD18 /* musiccontrol_progress_full.png in Resources */,
 				6C81545F167CE81E00DCAD18 /* musiccontrol_key.png in Resources */,
+				6C815465167CEB3A00DCAD18 /* navbar_logo.png in Resources */,
+				6C815468167CEBA300DCAD18 /* background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1436,6 +1445,7 @@
 				79866FFD167CA90600EEDC57 /* ROPublishPhotoInternal.m in Sources */,
 				6C1589D0167CC2F1008FB34D /* AppUtil.m in Sources */,
 				6C815423167CC7CD00DCAD18 /* SVStatusHUD.m in Sources */,
+				121C5F3D167CD30200612A2E /* BumpManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

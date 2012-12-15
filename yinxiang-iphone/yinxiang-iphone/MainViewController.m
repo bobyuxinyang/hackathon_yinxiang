@@ -11,10 +11,14 @@
 #import "YXSharePackage.h"
 #import "AppUtil.h"
 #import "define.h"
+#import "XMPPManager.h"
 
 @interface MainViewController () {
     NSTimer *timer;
 }
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @property (strong, nonatomic) IBOutlet UIButton *pauseBtn;
 
 @property (strong, nonatomic) IBOutlet UIButton *playBtn;
@@ -66,20 +70,23 @@
 
 - (void)generateTimer
 {
-   timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateCurrentTime) userInfo:self.player repeats:YES]; 
+   timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateCurrentTime) userInfo:self.player repeats:YES];
 }
 
 - (IBAction)prev:(id)sender {
     [self.player prev];
+    [[XMPPManager sharedManager] sendControllPrev];    
 }
 
 - (IBAction)play:(id)sender {
     [self.player play];
     //timer
     [self generateTimer];
-    
+
     self.playBtn.alpha = 0.0f;
     self.pauseBtn.alpha = 1.0f;
+
+    [[XMPPManager sharedManager] sendControllStart];    
 }
 
 
@@ -87,14 +94,18 @@
     [self.player pause];
     //timer;
     timer = nil;
-    
+
     self.playBtn.alpha = 1.0f;
     self.pauseBtn.alpha = 0.0f;
+
+    [[XMPPManager sharedManager] sendControllPause];    
 }
 
 
 - (IBAction)next:(id)sender {
     [self.player next];
+
+    [[XMPPManager sharedManager] sendControllNext];    
 }
 
 
@@ -104,10 +115,13 @@
 
 - (IBAction)slideTouchUpInside:(id)sender {
     [self generateTimer];
+
+    [[XMPPManager sharedManager] sendControllSyncProgressAtIndex:self.currentMusicIndex AndDuration:(int)self.player.currentTime];    
 }
 
 - (IBAction)slideTouchUpOutside:(id)sender {
-     [self generateTimer];   
+     [self generateTimer];
+     [[XMPPManager sharedManager] sendControllSyncProgressAtIndex:self.currentMusicIndex AndDuration:(int)self.player.currentTime];    
 }
 
 - (IBAction)handleSliderChanged:(id)sender {
@@ -183,6 +197,10 @@
     
     [self.progress setMinimumTrackImage:min_stetchTrack forState:UIControlStateNormal];
     [self.progress setMaximumTrackImage:max_stetchTrack forState:UIControlStateNormal];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    self.view.backgroundColor = [UIColor colorWithRed:242.0f/255.0f green:250.0f/255.0f blue:251.0f/255.0f alpha:1.0f];
 }
 
 - (void)didReceiveMemoryWarning
@@ -272,6 +290,7 @@
     if (buttonIndex == 1) {
         NSLog(@"Bump share end");
         
+        [self.player exit];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }

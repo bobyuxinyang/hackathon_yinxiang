@@ -11,12 +11,15 @@
 #import "MainViewController.h"
 #import "YXSharePackage.h"
 #import "define.h"
+#import "BumpClient.h"
 
 @interface BumpViewController () <UIAlertViewDelegate>
 
 @end
 
 @implementation BumpViewController
+
+@synthesize renren = _renren;
 
 // just for test
 - (void)getTestSamples
@@ -99,55 +102,88 @@
     NSLog(@"...audio received");        
 }
 
+- (void)bumpSuccessed:(NSNotification *)noti
+{
+    NSLog(@"Bump Success");
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否与xxx的iphone链接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
+    [alertView show];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bumpSuccessed:) name:YX_XMPPPartnerIdReceivedNotification object:nil];
+    
     // just for test
-    [self getTestSamples];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlPauseReceived:)
-                                                 name:YX_XMPP_CONTROL_PAUSE_NOTIFICATION
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlStartReceived:)
-                                                 name:YX_XMPP_CONTROL_START_NOTIFICATION
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlNextReceived:)
-                                                 name:YX_XMPP_CONTROL_NEXT_NOTIFICATION
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlPrevReceived:)
-                                                 name:YX_XMPP_CONTROL_PREV_NOTIFICATION
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlProgressReceived:)
-                                                 name:YX_XMPP_CONTROL_PROGRESS_NOTIFICATION
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlTextInfoReceived:)
-                                                 name:YX_XMPP_CONTROL_SENDTEXT_NOTIFICATION
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(controlAudioInfoReceived:)
-                                                 name:YX_XMPP_CONTROL_SENDAUDIO_NOTIFICATION
-                                               object:nil];
+//    [self getTestSamples];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlPauseReceived:)
+//                                                 name:YX_XMPP_CONTROL_PAUSE_NOTIFICATION
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlStartReceived:)
+//                                                 name:YX_XMPP_CONTROL_START_NOTIFICATION
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlNextReceived:)
+//                                                 name:YX_XMPP_CONTROL_NEXT_NOTIFICATION
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlPrevReceived:)
+//                                                 name:YX_XMPP_CONTROL_PREV_NOTIFICATION
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlProgressReceived:)
+//                                                 name:YX_XMPP_CONTROL_PROGRESS_NOTIFICATION
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlTextInfoReceived:)
+//                                                 name:YX_XMPP_CONTROL_SENDTEXT_NOTIFICATION
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(controlAudioInfoReceived:)
+//                                                 name:YX_XMPP_CONTROL_SENDAUDIO_NOTIFICATION
+//                                               object:nil];
+//    
+    self.renren = [Renren sharedRenren];
+
 }
 
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navbar_logo.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)loginUsingRenren:(id)sender {
-    RenrenViewController *renrenVC = [[RenrenViewController alloc] initWithNibName:@"RenrenViewController" bundle:nil];
-    [self.navigationController pushViewController:renrenVC animated:YES];
+
+//    NSLog(@"time: %@", [NSString stringWithFormat:@"%d", (int)[self.renren.expirationDate timeIntervalSince1970]]);
+	if ([self.renren isSessionValid]) {
+        [self showRenrenFriends];
+	} else {
+        NSArray *permissions = [NSArray arrayWithObjects:@"publish_feed",nil];
+		[self.renren authorizationWithPermisson:permissions andDelegate:self];
+	}
+    
 }
+
+- (void)showRenrenFriends
+{
+    RenrenViewController *renrenVC = [[RenrenViewController alloc] initWithNibName:@"RenrenViewController" bundle:nil];
+    renrenVC.renren = self.renren;
+    [self.navigationController pushViewController:renrenVC animated:YES];
+
+}
+
 - (IBAction)testBump:(id)sender {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否与xxx的iphone链接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
     [alertView show];
@@ -162,6 +198,59 @@
         MainViewController *mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
         [self presentViewController:mainViewController animated:YES completion:nil];
     }
+}
+
+#pragma mark - Renren Delegate
+
+- (void)renrenDidLogin:(Renren *)renren
+{
+    
+//    NSLog(@"accessToken     :%@", renren.accessToken);
+//    NSLog(@"secret          :%@", renren.secret);
+//    NSLog(@"sessionKey      :%@", renren.sessionKey);
+//    NSLog(@"expirationDate  :%@", renren.expirationDate);
+    
+    NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+    
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    // get logged in user id (NSNumber)
+    // notice: it's may wrong
+    
+    [postData setValue:[defaults objectForKey:@"session_UserId"] forKey:@"renren_id"];
+    [postData setValue:renren.accessToken forKey:@"accessToken"];
+    [postData setValue:[NSString stringWithFormat:@"%d", (int)[renren.expirationDate timeIntervalSince1970]] forKey:@"expires_at"];
+    [postData setValue:@"" forKey:@"deviceid"];
+    [postData setValue:@"" forKey:@"xmpp_id"];
+    
+    //TODO: register
+
+    // show friends
+    [self showRenrenFriends];
+}
+
+- (void)renrenDialogDidCancel:(Renren *)renren
+{
+}
+
+- (void)renren:(Renren *)renren loginFailWithError:(ROError *)error
+{
+    NSString *title = [NSString stringWithFormat:@"Error code:%d", [error code]];
+	NSString *description = [NSString stringWithFormat:@"%@", [error localizedDescription]];
+	UIAlertView *alertView =[[UIAlertView alloc] initWithTitle:title message:description delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+	[alertView show];
+}
+
+- (void)renren:(Renren *)renren requestFailWithError:(ROError*)error{
+	//Demo Test
+    NSString* errorCode = [NSString stringWithFormat:@"Error:%d",error.code];
+    NSString* errorMsg = [error localizedDescription];
+    
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:errorCode message:errorMsg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+}
+
+- (IBAction)simulateBump:(id)sender {
+    [[BumpClient sharedClient] simulateBump];
 }
 
 @end

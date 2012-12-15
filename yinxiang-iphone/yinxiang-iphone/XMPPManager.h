@@ -12,6 +12,19 @@
 
 @interface XMPPManager : NSObject
 @property (nonatomic, strong) XMPPStream *xmppStream;
+@property (nonatomic, copy) NSString *partnerUserId;
+@property (nonatomic, copy) NSString *myUserId;
 + (XMPPManager *)sharedManager;
 - (void)connectXMPP;
+- (void)sendMessage:(NSString *)message;
+
+// play control methods
+- (void)sendControllPause;
+- (void)sendControllStart;
+- (void)sendControllPrev;
+- (void)sendControllNext;
+- (void)sendControllSyncProgressAtIndex:(NSInteger)index
+                            AndDuration:(NSInteger)duration;
+- (void)sendControllSendText:(NSString *)text;
+
 @end

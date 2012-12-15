@@ -27,6 +27,15 @@
     }
 }
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+    
+    UIView *view = [[UIView alloc]initWithFrame:self.frame];
+    view.backgroundColor = [UIColor colorWithRed:170.0f/255.0f green:220.f/255.0f blue:220.f/255.0f alpha:1.0f];
+    
+    self.selectedBackgroundView = view;
+    }
 
 - (void)setAudioFile:(AudioFile *)audioFile {
     if (![_audioFile isEqual:audioFile]) {
