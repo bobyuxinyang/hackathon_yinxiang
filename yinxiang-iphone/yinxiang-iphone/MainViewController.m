@@ -8,6 +8,8 @@
 
 #import "MainViewController.h"
 #import "AudioFile.h"
+#import "YXSharePackage.h"
+#import "define.h"
 
 @interface MainViewController () {
     NSTimer *timer;
@@ -104,20 +106,56 @@
     [self.player setCurrentTime:slider.value * self.player.duration];
 }
 
-- (void)viewDidLoad
+- (void)setUpMusicList
 {
-    [super viewDidLoad];
-    
-    timer = nil;
-    
     NSMutableArray *list = [NSMutableArray array];
     [list addObject:[[AudioFile alloc] initWithPath:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Let It Be" ofType:@"mp3"]] coverImage:[UIImage imageNamed:@"Let It Be.jpg"]]];
     
     [list addObject:[[AudioFile alloc] initWithPath:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Eye Of The Tiger" ofType:@"mp3"]] coverImage:[UIImage imageNamed:@"Eye Of The Tiger.png"]]];
     
     self.player.musicList = self.musicListViewControler.audioList = list;
+}
+
+- (void)registerNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlPauseReceived:)
+                                                 name:YX_XMPP_CONTROL_PAUSE_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlStartReceived:)
+                                                 name:YX_XMPP_CONTROL_START_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlNextReceived:)
+                                                 name:YX_XMPP_CONTROL_NEXT_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlPrevReceived:)
+                                                 name:YX_XMPP_CONTROL_PREV_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlProgressReceived:)
+                                                 name:YX_XMPP_CONTROL_PROGRESS_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlTextInfoReceived:)
+                                                 name:YX_XMPP_CONTROL_SENDTEXT_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlAudioInfoReceived:)
+                                                 name:YX_XMPP_CONTROL_SENDAUDIO_NOTIFICATION
+                                               object:nil];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
     
+    [self registerNotification];
+    [self setUpMusicList];
     //播放第一首
+    timer = nil;
     self.player.index = 0;
     [self play:nil];
 }
@@ -136,6 +174,64 @@
     [self presentViewController:self.musicListViewControler animated:YES completion:nil];
 }
 
+
+#pragma mark -- XMPP Notification
+- (void)controlPauseReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...pause");
+    
+    [self.player pause];
+    timer = nil;
+}
+
+- (void)controlStartReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...start");
+    
+    [self.player play];
+    [self generateTimer];
+}
+
+- (void)controlNextReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...next");
+    
+    [self.player next];
+}
+
+- (void)controlPrevReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...prev");
+    
+    [self.player prev];
+}
+
+- (void)controlProgressReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...progress sync");
+
+    NSInteger time = [[package.dictionaryData objectForKey:@"duration"] integerValue];
+    timer = nil;
+    [self.player setCurrentTime:time];
+    [self generateTimer];
+}
+
+- (void)controlTextInfoReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...text received");
+}
+
+- (void)controlAudioInfoReceived:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSLog(@"...audio received");
+}
 
 #pragma mark -- UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
