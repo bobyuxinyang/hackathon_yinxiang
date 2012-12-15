@@ -61,9 +61,9 @@
     [SVStatusHUD showWithImage:[UIImage imageNamed:@"pop_prev"] status:@"上一首" duration:2.0f];  
 }
 
-+ (void)showProgressHud
++ (void)showGoToIndexHud: (NSInteger)index
 {
-    [SVStatusHUD showWithImage:[UIImage imageNamed:@""] status:nil duration:2.0f];
+    [SVStatusHUD showWithImage:[UIImage imageNamed:@"pop_next"] status:[NSString stringWithFormat:@"跳到第%d首", index, nil] duration:2.0f];
 }
 
 @end

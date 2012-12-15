@@ -17,6 +17,8 @@
     NSTimer *timer;
 }
 
+@property (strong, nonatomic) IBOutlet UILabel *deviceName;
+
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) IBOutlet UIButton *pauseBtn;
@@ -105,7 +107,7 @@
 - (IBAction)next:(id)sender {
     [self.player next];
 
-    [[XMPPManager sharedManager] sendControllNext];    
+    [[XMPPManager sharedManager] sendControllNext];
 }
 
 
@@ -188,6 +190,8 @@
 {
     [super viewWillAppear:animated];
     
+    self.deviceName.text = [[NSUserDefaults standardUserDefaults] valueForKey:YXDeviceName];
+    
     self.progress.backgroundColor = [UIColor clearColor];
     UIImage *min_stetchTrack = [UIImage imageNamed:@"musiccontrol_progress_full.png"];
     UIImage *max_stetchTrack = [UIImage imageNamed:@"musiccontrol_progress_empty.png"];
@@ -262,14 +266,20 @@
     YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
     NSLog(@"...progress sync");
 
-    NSLog(@"%@", [package.dictionaryData objectForKey:@"index"]);
-    NSLog(@"%@", [package.dictionaryData objectForKey:@"duration"]);
+    NSInteger index = [[package.dictionaryData objectForKey:@"index"] integerValue];
     NSInteger time = [[package.dictionaryData objectForKey:@"duration"] integerValue];
-    timer = nil;
     
-    [AppUtil showProgressHud];
-    [self.player setCurrentTime:time];
-    [self generateTimer];
+    if (index == self.currentMusicIndex) {
+        //调整播放进度
+        timer = nil;
+        [self.player setCurrentTime:time];
+        [self generateTimer];
+    }
+    else {
+        //跳转到第index首歌
+        [AppUtil showGoToIndexHud:index];
+        self.player.index = index;
+    }
 }
 
 - (void)controlTextInfoReceived:(NSNotification *)noti

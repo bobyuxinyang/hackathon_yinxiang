@@ -116,6 +116,11 @@
 		6C81545F167CE81E00DCAD18 /* musiccontrol_key.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C81545E167CE81D00DCAD18 /* musiccontrol_key.png */; };
 		6C815465167CEB3A00DCAD18 /* navbar_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815464167CEB3A00DCAD18 /* navbar_logo.png */; };
 		6C815468167CEBA300DCAD18 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815467167CEBA300DCAD18 /* background.png */; };
+		6C81546F167CF74E00DCAD18 /* homepage_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C81546D167CF74E00DCAD18 /* homepage_01.png */; };
+		6C815470167CF74E00DCAD18 /* homepage_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C81546E167CF74E00DCAD18 /* homepage_02.png */; };
+		6C815475167CF84F00DCAD18 /* table-01_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815474167CF84F00DCAD18 /* table-01_normal.png */; };
+		6C815477167CFAAD00DCAD18 /* icon_cancl.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C815476167CFAAD00DCAD18 /* icon_cancl.png */; };
+		6C81547A167CFC4000DCAD18 /* UITextField+HideKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C815479167CFC4000DCAD18 /* UITextField+HideKeyBoard.m */; };
 		6C9F2154167C430F00D177C9 /* AudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9F2153167C430F00D177C9 /* AudioFile.m */; };
 		6C9F2156167C460800D177C9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C9F2155167C460800D177C9 /* AudioToolbox.framework */; };
 		7913E748167CDD4E003658AB /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 7913E6F7167CDD4E003658AB /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -389,6 +394,12 @@
 		6C81545E167CE81D00DCAD18 /* musiccontrol_key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musiccontrol_key.png; sourceTree = "<group>"; };
 		6C815464167CEB3A00DCAD18 /* navbar_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar_logo.png; sourceTree = "<group>"; };
 		6C815467167CEBA300DCAD18 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		6C81546D167CF74E00DCAD18 /* homepage_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage_01.png; sourceTree = "<group>"; };
+		6C81546E167CF74E00DCAD18 /* homepage_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage_02.png; sourceTree = "<group>"; };
+		6C815474167CF84F00DCAD18 /* table-01_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table-01_normal.png"; sourceTree = "<group>"; };
+		6C815476167CFAAD00DCAD18 /* icon_cancl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_cancl.png; sourceTree = "<group>"; };
+		6C815478167CFC4000DCAD18 /* UITextField+HideKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextField+HideKeyBoard.h"; path = "util/UITextField+HideKeyBoard.h"; sourceTree = "<group>"; };
+		6C815479167CFC4000DCAD18 /* UITextField+HideKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextField+HideKeyBoard.m"; path = "util/UITextField+HideKeyBoard.m"; sourceTree = "<group>"; };
 		6C9F2152167C430F00D177C9 /* AudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioFile.h; path = Model/AudioFile.h; sourceTree = "<group>"; };
 		6C9F2153167C430F00D177C9 /* AudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioFile.m; path = Model/AudioFile.m; sourceTree = "<group>"; };
 		6C9F2155167C460800D177C9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -627,6 +638,8 @@
 				12237C68167C57C400224B03 /* define.h */,
 				6C1589CE167CC2F1008FB34D /* AppUtil.h */,
 				6C1589CF167CC2F1008FB34D /* AppUtil.m */,
+				6C815478167CFC4000DCAD18 /* UITextField+HideKeyBoard.h */,
+				6C815479167CFC4000DCAD18 /* UITextField+HideKeyBoard.m */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -1011,9 +1024,13 @@
 			children = (
 				6C815467167CEBA300DCAD18 /* background.png */,
 				6C815464167CEB3A00DCAD18 /* navbar_logo.png */,
+				6C815474167CF84F00DCAD18 /* table-01_normal.png */,
 				6C815432167CD7C400DCAD18 /* pop_next.png */,
+				6C815476167CFAAD00DCAD18 /* icon_cancl.png */,
 				6C81543A167CD8E600DCAD18 /* navbar_l.png */,
 				6C815433167CD7C400DCAD18 /* pop_pause.png */,
+				6C81546D167CF74E00DCAD18 /* homepage_01.png */,
+				6C81546E167CF74E00DCAD18 /* homepage_02.png */,
 				6C815434167CD7C400DCAD18 /* pop_play.png */,
 				6C815435167CD7C400DCAD18 /* pop_pre.png */,
 				6C81543E167CDA4A00DCAD18 /* musiccontrol_next.png */,
@@ -1509,6 +1526,10 @@
 				6C81545F167CE81E00DCAD18 /* musiccontrol_key.png in Resources */,
 				6C815465167CEB3A00DCAD18 /* navbar_logo.png in Resources */,
 				6C815468167CEBA300DCAD18 /* background.png in Resources */,
+				6C81546F167CF74E00DCAD18 /* homepage_01.png in Resources */,
+				6C815470167CF74E00DCAD18 /* homepage_02.png in Resources */,
+				6C815475167CF84F00DCAD18 /* table-01_normal.png in Resources */,
+				6C815477167CFAAD00DCAD18 /* icon_cancl.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1622,7 +1643,6 @@
 				79866FFD167CA90600EEDC57 /* ROPublishPhotoInternal.m in Sources */,
 				6C1589D0167CC2F1008FB34D /* AppUtil.m in Sources */,
 				6C815423167CC7CD00DCAD18 /* SVStatusHUD.m in Sources */,
-				121C5F3D167CD30200612A2E /* BumpManager.m in Sources */,
 				7913E748167CDD4E003658AB /* ASIAuthenticationDialog.m in Sources */,
 				7913E749167CDD4E003658AB /* ASIDataCompressor.m in Sources */,
 				7913E74A167CDD4E003658AB /* ASIDataDecompressor.m in Sources */,
@@ -1647,6 +1667,7 @@
 				7913E75D167CDD4E003658AB /* ASIS3ServiceRequest.m in Sources */,
 				7913E771167CE5EF003658AB /* Reachability.m in Sources */,
 				79501517167CF1D200AFFC2F /* BumpManager.m in Sources */,
+				6C81547A167CFC4000DCAD18 /* UITextField+HideKeyBoard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

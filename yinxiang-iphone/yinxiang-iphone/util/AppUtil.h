@@ -28,7 +28,8 @@
 + (void)showPauseHud;
 + (void)showNextHud;
 + (void)showPreHud;
-+ (void)showProgressHud;
+//+ (void)showProgressHud;
++ (void)showGoToIndexHud: (NSInteger)index;
 
 @end
 

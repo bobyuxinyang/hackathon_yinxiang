@@ -14,8 +14,11 @@
 #import "XMPPManager.h"
 #import "ASIFormDataRequest.h"
 #import "BumpClient.h"
+#import "UITextField+HideKeyBoard.h"
 
 @interface BumpViewController () <UIAlertViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UITextField *deviceName;
 
 @end
 
@@ -107,7 +110,7 @@
 - (void)bumpSuccessed:(NSNotification *)noti
 {
     NSLog(@"Bump Success");
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否与xxx的iphone链接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否与Bob`iphone链接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
     [alertView show];
 }
 
@@ -153,11 +156,38 @@
 
 }
 
+
+- (IBAction)handleInputDone:(id)sender {
+    UITextField *filed = (UITextField *)sender;
+    [[NSUserDefaults standardUserDefaults] setValue:filed.text forKey:YXDeviceName];
+    
+    [sender resignFirstResponder];
+}
+
+- (void)fetchDeviceName
+{
+    NSString *deviceName;
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:YXDeviceName]) {
+        deviceName = [[NSUserDefaults standardUserDefaults] valueForKey:YXDeviceName];
+    } else {
+        deviceName = [[UIDevice currentDevice] name];
+        [[NSUserDefaults standardUserDefaults] setValue:deviceName forKey:YXDeviceName];
+    }
+    
+    self.deviceName.text = deviceName;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navbar_logo.png"]];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    
+    self.deviceName.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self.deviceName hideKeyBoard:self.view];
+    
+    [self fetchDeviceName];
 }
 
 - (void)didReceiveMemoryWarning
@@ -188,7 +218,7 @@
 }
 
 - (IBAction)testBump:(id)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否与xxx的iphone链接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否与Bob`iphone链接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
     [alertView show];
 }
 
@@ -273,5 +303,6 @@
 - (IBAction)simulateBump:(id)sender {
     [[BumpClient sharedClient] simulateBump];
 }
+
 
 @end
