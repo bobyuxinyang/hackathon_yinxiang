@@ -9,11 +9,14 @@
 #import "MusicListViewController.h"
 #import "AudioFile.h"
 #import "AudioCell.h"
+#import "AppUtil.h"
 #import "define.h"
 
 @interface MusicListViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSInteger selectedRowIndex;
+@property (strong, nonatomic) IBOutlet YXToolBar *toolbar;
+
 @end
 
 @implementation MusicListViewController
@@ -50,7 +53,7 @@
     [self.tableView setTableFooterView:v];
     
     //separator
-    self.tableView.separatorColor = [UIColor grayColor];
+    self.tableView.separatorColor = [UIColor colorWithRed:79/255 green:136/255 blue:136/255 alpha:1.0];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 

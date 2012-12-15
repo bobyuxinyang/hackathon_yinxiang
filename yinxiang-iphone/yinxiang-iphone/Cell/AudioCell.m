@@ -17,10 +17,10 @@
 {
     if (_isPlaying != isPlaying) {
         if (isPlaying) {
-            
+            self.mark.image = [UIImage imageNamed:@"radio_select.png"];
         }
         else {
-            
+            self.mark.image = [UIImage imageNamed:@"radio_normal.png"];
         }
         
         _isPlaying = isPlaying;

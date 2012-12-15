@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "XMPPManager.h"
 #import "BumpViewController.h"
+#import "AppUtil.h"
 
 @implementation AppDelegate
 @synthesize rootNavigationController = _rootNavigationController;
@@ -22,7 +23,7 @@
     // Override point for customization after application launch.
     self.viewController = [[BumpViewController alloc] initWithNibName:@"BumpViewController" bundle:nil];
     
-    self.rootNavigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    self.rootNavigationController = [[YXNavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = self.rootNavigationController;
     
     [self.window makeKeyAndVisible];
