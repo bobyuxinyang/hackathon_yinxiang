@@ -30,6 +30,8 @@
 - (void)play;
 - (void)pause;
 
+- (void)exit;
+
 @end
 
 @protocol MusicPlaeyerDeleagate <NSObject>;

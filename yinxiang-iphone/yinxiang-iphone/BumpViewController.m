@@ -162,6 +162,10 @@
 {
     [super viewWillAppear:animated];
     [[BumpClient sharedClient] connect];
+
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navbar_logo.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+
 }
 
 - (void)didReceiveMemoryWarning

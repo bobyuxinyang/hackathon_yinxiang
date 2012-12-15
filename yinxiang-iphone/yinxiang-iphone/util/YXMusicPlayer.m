@@ -89,6 +89,12 @@
 }
 
 
+- (void)exit
+{
+    [self.player stop];
+    self.player = nil;
+}
+
 #pragma mark AVAudioPlayer delegate
 
 

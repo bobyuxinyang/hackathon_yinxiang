@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "AudioFile.h"
 #import "YXSharePackage.h"
+#import "AppUtil.h"
 #import "define.h"
 #import "XMPPManager.h"
 #import "BumpClient.h"
@@ -17,6 +18,11 @@
     NSTimer *timer;
 }
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) IBOutlet UIButton *pauseBtn;
+
+@property (strong, nonatomic) IBOutlet UIButton *playBtn;
 @property (strong, nonatomic) IBOutlet UISlider *progress;
 @property (strong, nonatomic) IBOutlet UILabel *titleText;
 @property (nonatomic, strong) YXMusicPlayer *player;
@@ -77,6 +83,10 @@
     [self.player play];
     //timer
     [self generateTimer];
+
+    self.playBtn.alpha = 0.0f;
+    self.pauseBtn.alpha = 1.0f;
+
     [[XMPPManager sharedManager] sendControllStart];    
 }
 
@@ -85,12 +95,17 @@
     [self.player pause];
     //timer;
     timer = nil;
+
+    self.playBtn.alpha = 1.0f;
+    self.pauseBtn.alpha = 0.0f;
+
     [[XMPPManager sharedManager] sendControllPause];    
 }
 
 
 - (IBAction)next:(id)sender {
     [self.player next];
+
     [[XMPPManager sharedManager] sendControllNext];    
 }
 
@@ -101,6 +116,7 @@
 
 - (IBAction)slideTouchUpInside:(id)sender {
     [self generateTimer];
+
     [[XMPPManager sharedManager] sendControllSyncProgressAtIndex:self.currentMusicIndex AndDuration:(int)self.player.currentTime];    
 }
 
@@ -163,6 +179,7 @@
     [self registerNotification];
     [self setUpMusicList];
     //播放第一首
+    //todo:
     timer = nil;
     self.player.index = 0;
     [self play:nil];
@@ -172,6 +189,20 @@
 {
     [super viewWillAppear:animated];
     [[BumpClient sharedClient] disconnect];
+    
+    self.progress.backgroundColor = [UIColor clearColor];
+    UIImage *min_stetchTrack = [UIImage imageNamed:@"musiccontrol_progress_full.png"];
+    UIImage *max_stetchTrack = [UIImage imageNamed:@"musiccontrol_progress_empty.png"];
+    
+    [self.progress setThumbImage: [UIImage imageNamed:@"musiccontrol_key.png"] forState:UIControlStateNormal];
+        [self.progress setThumbImage: [UIImage imageNamed:@"musiccontrol_key.png"] forState:UIControlStateHighlighted];
+    
+    [self.progress setMinimumTrackImage:min_stetchTrack forState:UIControlStateNormal];
+    [self.progress setMaximumTrackImage:max_stetchTrack forState:UIControlStateNormal];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    self.view.backgroundColor = [UIColor colorWithRed:242.0f/255.0f green:250.0f/255.0f blue:251.0f/255.0f alpha:1.0f];
 }
 
 - (void)didReceiveMemoryWarning
@@ -195,6 +226,7 @@
     YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
     NSLog(@"...pause");
     
+    [AppUtil showPauseHud];
     [self.player pause];
     timer = nil;
 }
@@ -203,7 +235,8 @@
 {
     YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
     NSLog(@"...start");
-    
+
+    [AppUtil showPlayHud];
     [self.player play];
     [self generateTimer];
 }
@@ -213,6 +246,7 @@
     YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
     NSLog(@"...next");
     
+    [AppUtil showNextHud];
     [self.player next];
 }
 
@@ -221,6 +255,7 @@
     YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
     NSLog(@"...prev");
     
+    [AppUtil showPreHud];
     [self.player prev];
 }
 
@@ -233,6 +268,8 @@
     NSLog(@"%@", [package.dictionaryData objectForKey:@"duration"]);
     NSInteger time = [[package.dictionaryData objectForKey:@"duration"] integerValue];
     timer = nil;
+    
+    [AppUtil showProgressHud];
     [self.player setCurrentTime:time];
     [self generateTimer];
 }
@@ -255,6 +292,7 @@
     if (buttonIndex == 1) {
         NSLog(@"Bump share end");
         
+        [self.player exit];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
