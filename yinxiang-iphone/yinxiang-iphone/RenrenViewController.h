@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RenrenViewController : UIViewController
+@interface RenrenViewController : UITableViewController <RenrenDelegate>
+
+@property (retain,nonatomic)Renren *renren;
 
 @end
