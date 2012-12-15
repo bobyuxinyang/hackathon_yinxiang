@@ -215,6 +215,8 @@
     YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
     NSLog(@"...progress sync");
 
+    NSLog(@"%@", [package.dictionaryData objectForKey:@"index"]);
+    NSLog(@"%@", [package.dictionaryData objectForKey:@"duration"]);
     NSInteger time = [[package.dictionaryData objectForKey:@"duration"] integerValue];
     timer = nil;
     [self.player setCurrentTime:time];

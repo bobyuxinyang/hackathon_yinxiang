@@ -41,11 +41,11 @@
     package3.type = YXSharePackageTypeNext;
     NSLog(@"next - %@", [package3 toPackageString]);
     
-    //跳转到 第3首，3498时间
+    //跳转到 第1首，20时间
     YXSharePackage *package4 = [[YXSharePackage alloc] init];
     package4.type = YXSharePackageTypeSyncProgress;
-    [package4.dictionaryData setValue:[NSNumber numberWithInt:2] forKey:@"index"];
-    [package4.dictionaryData setValue:[NSNumber numberWithInt:3498] forKey:@"duration"];
+    [package4.dictionaryData setValue:[NSNumber numberWithInt:0] forKey:@"index"];
+    [package4.dictionaryData setValue:[NSNumber numberWithInt:100] forKey:@"duration"];
     NSLog(@"progress - %@", [package4 toPackageString]);
     
     //发送文字：你好
