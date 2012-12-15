@@ -102,11 +102,16 @@
     NSLog(@"...audio received");        
 }
 
-- (void)bumpSuccessed:(NSNotification *)noti
+- (void)doConnect
 {
     NSLog(@"Bump Success");
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否与xxx的iphone链接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
     [alertView show];
+}
+
+- (void)bumpSuccessed:(NSNotification *)noti
+{
+    [self doConnect];
 }
 
 - (void)viewDidLoad
@@ -151,6 +156,12 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[BumpClient sharedClient] connect];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -178,8 +189,7 @@
 }
 
 - (IBAction)testBump:(id)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否与xxx的iphone链接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
-    [alertView show];
+    [self doConnect];
 }
 
 #pragma mark -- UIAlertViewDelegate

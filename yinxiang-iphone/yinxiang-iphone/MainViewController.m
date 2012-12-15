@@ -11,6 +11,7 @@
 #import "YXSharePackage.h"
 #import "define.h"
 #import "XMPPManager.h"
+#import "BumpClient.h"
 
 @interface MainViewController () {
     NSTimer *timer;
@@ -165,6 +166,12 @@
     timer = nil;
     self.player.index = 0;
     [self play:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[BumpClient sharedClient] disconnect];
 }
 
 - (void)didReceiveMemoryWarning
