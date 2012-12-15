@@ -407,6 +407,10 @@
 {
     self.player.index = index;
     [self.player play];
+    
+    [[XMPPManager sharedManager] sendControllSyncProgressAtIndex:index
+                                                     AndDuration:0];
+    
 }
 
 #pragma mark -- MusicPlayerDeleagate

@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1536</int>
-		<string key="IBDocument.SystemVersion">12A269</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
-		<string key="IBDocument.AppKitVersion">1187</string>
-		<string key="IBDocument.HIToolboxVersion">624.00</string>
+		<string key="IBDocument.SystemVersion">12C3006</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1926</string>
+			<string key="NS.object.0">1930</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -82,7 +82,7 @@
 					<object class="IBUIButton" id="119536180">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{114, 164}, {94, 44}}</string>
+						<string key="NSFrame">{{11, 450}, {94, 44}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSNextKeyView" ref="483159958"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -136,7 +136,7 @@
 					<object class="IBUIButton" id="483159958">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{114, 215}, {99, 44}}</string>
+						<string key="NSFrame">{{211, 450}, {99, 44}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSNextKeyView" ref="256712647"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -302,10 +302,10 @@
 							<reference ref="444024808"/>
 							<reference ref="306464362"/>
 							<reference ref="256712647"/>
-							<reference ref="119536180"/>
 							<reference ref="193045138"/>
-							<reference ref="483159958"/>
 							<reference ref="240124522"/>
+							<reference ref="483159958"/>
+							<reference ref="119536180"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -376,10 +376,10 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="homepage_01.png">{16, 16}</string>
-			<string key="homepage_02.png">{16, 16}</string>
-			<string key="table-01_normal.png">{16, 16}</string>
+			<string key="homepage_01.png">{320, 200}</string>
+			<string key="homepage_02.png">{320, 122}</string>
+			<string key="table-01_normal.png">{300, 45}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1926</string>
+		<string key="IBCocoaTouchPluginVersion">1930</string>
 	</data>
 </archive>
