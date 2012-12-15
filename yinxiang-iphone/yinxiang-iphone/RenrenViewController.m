@@ -69,8 +69,10 @@
     
     // Configure the cell...
     id p = [peoples objectAtIndex: indexPath.row];
-    NSLog(@"kkkkk \n%@", p);
+
     cell.textLabel.text = [(NSDictionary *)p objectForKey: @"name"];
+//    [(NSDictionary *)p objectForKey: @"tinyurl"];
+//    [(NSDictionary *)p objectForKey: @"uid"];
     
     return cell;
 }

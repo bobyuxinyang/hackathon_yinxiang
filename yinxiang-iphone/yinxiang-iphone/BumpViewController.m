@@ -142,7 +142,8 @@
 }
 
 - (IBAction)loginUsingRenren:(id)sender {
-    NSLog(@"%d", 1);
+
+//    NSLog(@"time: %@", [NSString stringWithFormat:@"%d", (int)[self.renren.expirationDate timeIntervalSince1970]]);
 	if ([self.renren isSessionValid]) {
         [self showRenrenFriends];
 	} else {
@@ -180,6 +181,27 @@
 
 - (void)renrenDidLogin:(Renren *)renren
 {
+    
+//    NSLog(@"accessToken     :%@", renren.accessToken);
+//    NSLog(@"secret          :%@", renren.secret);
+//    NSLog(@"sessionKey      :%@", renren.sessionKey);
+//    NSLog(@"expirationDate  :%@", renren.expirationDate);
+    
+    NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+    
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    // get logged in user id (NSNumber)
+    // notice: it's may wrong
+    
+    [postData setValue:[defaults objectForKey:@"session_UserId"] forKey:@"renren_id"];
+    [postData setValue:renren.accessToken forKey:@"accessToken"];
+    [postData setValue:[NSString stringWithFormat:@"%d", (int)[renren.expirationDate timeIntervalSince1970]] forKey:@"expires_at"];
+    [postData setValue:@"" forKey:@"deviceid"];
+    [postData setValue:@"" forKey:@"xmpp_id"];
+    
+    //TODO: register
+
+    // show friends
     [self showRenrenFriends];
 }
 
