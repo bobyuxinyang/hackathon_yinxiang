@@ -37,7 +37,11 @@ static XMPPManager *instance = nil;
 - (void)connectXMPP
 {
     NSLog(@"Connect to XMPP server");
-    self.xmppStream.myJID = [XMPPJID jidWithString:XMPP_USER_ID];
+    // 用自己device ID的xmpp_user_id登陆
+//    self.xmppStream.myJID = [XMPPJID jidWithString:XMPP_USER_ID];
+    NSString *uuidString = [UIDevice currentDevice].uniqueIdentifier;
+    NSString *xmpp_user_id = [NSString stringWithFormat:@"%@@%@", uuidString, XMPP_SERVER];
+    self.xmppStream.myJID = [XMPPJID jidWithString:xmpp_user_id];;
     self.xmppStream.hostName = XMPP_SERVER;
     NSError *error = nil;
     if (![self.xmppStream connect:&error]) {
