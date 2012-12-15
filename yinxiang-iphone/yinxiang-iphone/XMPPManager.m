@@ -27,11 +27,26 @@ static XMPPManager *instance = nil;
 
 @synthesize partnerUserId = _partnerUserId;
 @synthesize myUserId = _myUserId;
+@synthesize myUserName = _myUserName;
 
 - (NSString *)myUserId
 {
     NSString *xmpp_user_id = [NSString stringWithFormat:@"%@@%@", [UIDevice currentDevice].uniqueIdentifier, XMPP_SERVER];
     return xmpp_user_id;
+}
+
+- (NSString *)myUserName
+{
+    NSString *customizedUserName = [[NSUserDefaults standardUserDefaults] objectForKey:YXDeviceName];
+    if (customizedUserName == nil) {
+        customizedUserName = [[UIDevice currentDevice] name];
+    }
+    return customizedUserName;
+}
+
+- (void)setMyUserName:(NSString *)myUserName
+{
+    [[NSUserDefaults standardUserDefaults] setObject:myUserName forKey:YXDeviceName];
 }
 
 

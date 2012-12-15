@@ -213,7 +213,7 @@
     UIButton *btn = (UIButton *)sender;
     if (btn.state == UIGestureRecognizerStateBegan) {
         NSLog(@"start recoding");
-        NSString *user = [[NSUserDefaults standardUserDefaults]valueForKey:YXDeviceName];
+        NSString *user = [XMPPManager sharedManager].myUserName;
         NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
         NSString *caldate = [now description];
         NSString *documentFold = [AppUtil getDocFolder];
@@ -254,7 +254,7 @@
     [super viewWillAppear:animated];
 //    [[BumpClient sharedClient] disconnect];
     
-    self.deviceName.text = [[NSUserDefaults standardUserDefaults] valueForKey:YXDeviceName];
+    self.deviceName.text = [XMPPManager sharedManager].myUserName;
     
     self.progress.backgroundColor = [UIColor clearColor];
     UIImage *min_stetchTrack = [UIImage imageNamed:@"musiccontrol_progress_full.png"];

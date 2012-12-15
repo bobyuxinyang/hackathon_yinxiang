@@ -41,15 +41,16 @@ static BumpManager *instance = nil;
         NSLog(@"Channel with %@ confirmed.", [[BumpClient sharedClient] userIDForChannel:channel]);
         self.currentChannel = channel;
         NSLog(@"Bump Matched");
-//        [[NSNotificationCenter defaultCenter] postNotificationName:kBumpMatchedNotification object:self];
         // 把自己的XMPP_USER_ID发给对方
         NSString *myUserId = [XMPPManager sharedManager].myUserId;
+
         [[BumpClient sharedClient] sendData:[myUserId dataUsingEncoding:NSUTF8StringEncoding]
                                   toChannel:channel];
     }];
     
     [[BumpClient sharedClient] setDataReceivedBlock:^(BumpChannelID channel, NSData *data) {
         NSString *to_user_id = [NSString stringWithCString:[data bytes] encoding:NSUTF8StringEncoding];
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPPPartnerIdReceivedNotification object:self];
         [XMPPManager sharedManager].partnerUserId = to_user_id;
         NSLog(@"Data received from %@: %@",

@@ -9,7 +9,7 @@
 #ifndef yinxiang_iphone_defines_h
 #define yinxiang_iphone_defines_h
 
-#define YXDeviceName @"deviceName"
+#define YXDeviceName @"MY_USER_NAME"
 
 //#define XMPP_USER_ID @"cat@yuxins-macbook-air-2.local"
 #define XMPP_USER_ID @"bob@yuxins-macbook-air-2.local"

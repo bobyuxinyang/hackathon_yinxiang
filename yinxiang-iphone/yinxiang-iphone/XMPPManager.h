@@ -14,6 +14,7 @@
 @property (nonatomic, strong) XMPPStream *xmppStream;
 @property (nonatomic, copy) NSString *partnerUserId;
 @property (nonatomic, copy) NSString *myUserId;
+@property (nonatomic, copy) NSString *myUserName;
 + (XMPPManager *)sharedManager;
 - (void)connectXMPP;
 - (void)sendMessage:(NSString *)message;

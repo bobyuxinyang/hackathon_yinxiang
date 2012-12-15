@@ -189,22 +189,15 @@
 
 - (IBAction)handleInputDone:(id)sender {
     UITextField *filed = (UITextField *)sender;
-    [[NSUserDefaults standardUserDefaults] setValue:filed.text forKey:YXDeviceName];
+
+    [XMPPManager sharedManager].myUserName = filed.text;
     
     [sender resignFirstResponder];
 }
 
 - (void)fetchDeviceName
 {
-    NSString *deviceName;
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:YXDeviceName]) {
-        deviceName = [[NSUserDefaults standardUserDefaults] valueForKey:YXDeviceName];
-    } else {
-        deviceName = [[UIDevice currentDevice] name];
-        [[NSUserDefaults standardUserDefaults] setValue:deviceName forKey:YXDeviceName];
-    }
-    
-    self.deviceName.text = deviceName;
+    self.deviceName.text = [XMPPManager sharedManager].myUserName;
 }
 
 - (void)viewWillAppear:(BOOL)animated
