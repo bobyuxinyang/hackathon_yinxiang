@@ -11,7 +11,6 @@
 		12237C2B167C341B00224B03 /* MusicListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12237C29167C341B00224B03 /* MusicListViewController.xib */; };
 		12237C2F167C36C900224B03 /* MusicItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12237C2E167C36C900224B03 /* MusicItemCell.m */; };
 		12237C31167C36E100224B03 /* MusicItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12237C30167C36E100224B03 /* MusicItemCell.xib */; };
-		12237C5C167C54F500224B03 /* YXSharePackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 12237C5B167C54F500224B03 /* YXSharePackage.m */; };
 		12237C63167C551D00224B03 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 12237C62167C551D00224B03 /* base64.m */; };
 		12467212167C25BC0050C11D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12467211167C25BC0050C11D /* UIKit.framework */; };
 		12467214167C25BC0050C11D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12467213167C25BC0050C11D /* Foundation.framework */; };
@@ -81,9 +80,15 @@
 		6C275330167C4FE6009C4E7F /* Let It Be.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6C27532A167C4FE6009C4E7F /* Let It Be.mp3 */; };
 		6C275331167C4FE6009C4E7F /* 屋顶.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6C27532B167C4FE6009C4E7F /* 屋顶.jpg */; };
 		6C275332167C4FE6009C4E7F /* 屋顶.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6C27532C167C4FE6009C4E7F /* 屋顶.mp3 */; };
-		6C275338167C57FC009C4E7F /* YXMusicPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C275337167C57FC009C4E7F /* YXMusicPlayer.m */; };
 		6C27533A167C58B8009C4E7F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C275339167C58B8009C4E7F /* AVFoundation.framework */; };
 		6C27533C167C58CC009C4E7F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C27533B167C58CC009C4E7F /* QuartzCore.framework */; };
+		6C2753BD167CA319009C4E7F /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C2753BC167CA319009C4E7F /* CoreAudio.framework */; };
+		6C2753BE167CA38B009C4E7F /* YXMusicPlayer.h in Sources */ = {isa = PBXBuildFile; fileRef = 6C2753B8167CA2E0009C4E7F /* YXMusicPlayer.h */; };
+		6C2753BF167CA38B009C4E7F /* YXMusicPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C2753B9167CA2E0009C4E7F /* YXMusicPlayer.m */; };
+		6C2753C0167CA38B009C4E7F /* YXRecorder.h in Sources */ = {isa = PBXBuildFile; fileRef = 6C2753BA167CA2E0009C4E7F /* YXRecorder.h */; };
+		6C2753C1167CA38B009C4E7F /* YXRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C2753BB167CA2E1009C4E7F /* YXRecorder.m */; };
+		6C2753C4167CA3E9009C4E7F /* YXSharePackage.h in Sources */ = {isa = PBXBuildFile; fileRef = 6C2753C2167CA3DE009C4E7F /* YXSharePackage.h */; };
+		6C2753C5167CA3E9009C4E7F /* YXSharePackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C2753C3167CA3DE009C4E7F /* YXSharePackage.m */; };
 		6C9F2154167C430F00D177C9 /* AudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9F2153167C430F00D177C9 /* AudioFile.m */; };
 		6C9F2156167C460800D177C9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C9F2155167C460800D177C9 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
@@ -95,8 +100,6 @@
 		12237C2D167C36C900224B03 /* MusicItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicItemCell.h; sourceTree = "<group>"; };
 		12237C2E167C36C900224B03 /* MusicItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicItemCell.m; sourceTree = "<group>"; };
 		12237C30167C36E100224B03 /* MusicItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicItemCell.xib; sourceTree = "<group>"; };
-		12237C5A167C54F500224B03 /* YXSharePackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXSharePackage.h; sourceTree = "<group>"; };
-		12237C5B167C54F500224B03 /* YXSharePackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXSharePackage.m; sourceTree = "<group>"; };
 		12237C5D167C550200224B03 /* DDXMLNode+CDATA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DDXMLNode+CDATA.h"; sourceTree = "<group>"; };
 		12237C5E167C550200224B03 /* DDXMLNode+CDATA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DDXMLNode+CDATA.m"; sourceTree = "<group>"; };
 		12237C61167C551D00224B03 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
@@ -223,10 +226,15 @@
 		6C27532A167C4FE6009C4E7F /* Let It Be.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Let It Be.mp3"; path = "Resource/Let It Be.mp3"; sourceTree = "<group>"; };
 		6C27532B167C4FE6009C4E7F /* 屋顶.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "屋顶.jpg"; path = "Resource/屋顶.jpg"; sourceTree = "<group>"; };
 		6C27532C167C4FE6009C4E7F /* 屋顶.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "屋顶.mp3"; path = "Resource/屋顶.mp3"; sourceTree = "<group>"; };
-		6C275336167C57FC009C4E7F /* YXMusicPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YXMusicPlayer.h; path = Model/YXMusicPlayer.h; sourceTree = "<group>"; };
-		6C275337167C57FC009C4E7F /* YXMusicPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YXMusicPlayer.m; path = Model/YXMusicPlayer.m; sourceTree = "<group>"; };
 		6C275339167C58B8009C4E7F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6C27533B167C58CC009C4E7F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6C2753B8167CA2E0009C4E7F /* YXMusicPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YXMusicPlayer.h; path = util/YXMusicPlayer.h; sourceTree = "<group>"; };
+		6C2753B9167CA2E0009C4E7F /* YXMusicPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = YXMusicPlayer.m; path = util/YXMusicPlayer.m; sourceTree = "<group>"; };
+		6C2753BA167CA2E0009C4E7F /* YXRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YXRecorder.h; path = util/YXRecorder.h; sourceTree = "<group>"; };
+		6C2753BB167CA2E1009C4E7F /* YXRecorder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = YXRecorder.m; path = util/YXRecorder.m; sourceTree = "<group>"; };
+		6C2753BC167CA319009C4E7F /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		6C2753C2167CA3DE009C4E7F /* YXSharePackage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YXSharePackage.h; path = util/YXSharePackage.h; sourceTree = "<group>"; };
+		6C2753C3167CA3DE009C4E7F /* YXSharePackage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = YXSharePackage.m; path = util/YXSharePackage.m; sourceTree = "<group>"; };
 		6C9F2152167C430F00D177C9 /* AudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioFile.h; path = Model/AudioFile.h; sourceTree = "<group>"; };
 		6C9F2153167C430F00D177C9 /* AudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioFile.m; path = Model/AudioFile.m; sourceTree = "<group>"; };
 		6C9F2155167C460800D177C9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -237,6 +245,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C2753BD167CA319009C4E7F /* CoreAudio.framework in Frameworks */,
+				6C27533A167C58B8009C4E7F /* AVFoundation.framework in Frameworks */,
 				12AB534F167C9ADB00BCC18F /* CoreLocation.framework in Frameworks */,
 				12AB534D167C9AD300BCC18F /* Security.framework in Frameworks */,
 				12AB534B167C9ACF00BCC18F /* libxml2.dylib in Frameworks */,
@@ -244,7 +254,6 @@
 				12AB5349167C9AA800BCC18F /* libresolv.dylib in Frameworks */,
 				12AB5347167C9AA300BCC18F /* CFNetwork.framework in Frameworks */,
 				6C27533C167C58CC009C4E7F /* QuartzCore.framework in Frameworks */,
-				6C27533A167C58B8009C4E7F /* AVFoundation.framework in Frameworks */,
 				12467212167C25BC0050C11D /* UIKit.framework in Frameworks */,
 				12467214167C25BC0050C11D /* Foundation.framework in Frameworks */,
 				12467216167C25BC0050C11D /* CoreGraphics.framework in Frameworks */,
@@ -266,18 +275,15 @@
 			name = cell;
 			sourceTree = "<group>";
 		};
-		12237C58167C54E900224B03 /* YXSharePackage */ = {
-			isa = PBXGroup;
-			children = (
-				12237C5A167C54F500224B03 /* YXSharePackage.h */,
-				12237C5B167C54F500224B03 /* YXSharePackage.m */,
-			);
-			name = YXSharePackage;
-			sourceTree = "<group>";
-		};
 		12237C5F167C550700224B03 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				6C2753C2167CA3DE009C4E7F /* YXSharePackage.h */,
+				6C2753C3167CA3DE009C4E7F /* YXSharePackage.m */,
+				6C2753B8167CA2E0009C4E7F /* YXMusicPlayer.h */,
+				6C2753B9167CA2E0009C4E7F /* YXMusicPlayer.m */,
+				6C2753BA167CA2E0009C4E7F /* YXRecorder.h */,
+				6C2753BB167CA2E1009C4E7F /* YXRecorder.m */,
 				12237C5D167C550200224B03 /* DDXMLNode+CDATA.h */,
 				12237C5E167C550200224B03 /* DDXMLNode+CDATA.m */,
 				12237C68167C57C400224B03 /* define.h */,
@@ -317,6 +323,7 @@
 				12AB5342167C9A9800BCC18F /* libBump */,
 				12AB52AF167C9A3700BCC18F /* XMPPFramework */,
 				6C27533B167C58CC009C4E7F /* QuartzCore.framework */,
+				6C2753BC167CA319009C4E7F /* CoreAudio.framework */,
 				12AB534E167C9ADB00BCC18F /* CoreLocation.framework */,
 				12AB534C167C9AD300BCC18F /* Security.framework */,
 				12AB534A167C9ACF00BCC18F /* libxml2.dylib */,
@@ -341,7 +348,6 @@
 				6C9F214D167C424600D177C9 /* Model */,
 				12237C60167C551D00224B03 /* base64 */,
 				12237C5F167C550700224B03 /* util */,
-				12237C58167C54E900224B03 /* YXSharePackage */,
 				12467220167C25BC0050C11D /* AppDelegate.h */,
 				12467221167C25BC0050C11D /* AppDelegate.m */,
 				12467229167C25BC0050C11D /* BumpViewController.h */,
@@ -643,8 +649,6 @@
 			children = (
 				6C9F2152167C430F00D177C9 /* AudioFile.h */,
 				6C9F2153167C430F00D177C9 /* AudioFile.m */,
-				6C275336167C57FC009C4E7F /* YXMusicPlayer.h */,
-				6C275337167C57FC009C4E7F /* YXMusicPlayer.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -738,6 +742,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C2753C4167CA3E9009C4E7F /* YXSharePackage.h in Sources */,
+				6C2753C5167CA3E9009C4E7F /* YXSharePackage.m in Sources */,
+				6C2753BE167CA38B009C4E7F /* YXMusicPlayer.h in Sources */,
+				6C2753BF167CA38B009C4E7F /* YXMusicPlayer.m in Sources */,
+				6C2753C0167CA38B009C4E7F /* YXRecorder.h in Sources */,
+				6C2753C1167CA38B009C4E7F /* YXRecorder.m in Sources */,
 				1246721E167C25BC0050C11D /* main.m in Sources */,
 				12467222167C25BC0050C11D /* AppDelegate.m in Sources */,
 				1246722B167C25BC0050C11D /* BumpViewController.m in Sources */,
@@ -747,8 +757,6 @@
 				12237C2F167C36C900224B03 /* MusicItemCell.m in Sources */,
 				6C9F2154167C430F00D177C9 /* AudioFile.m in Sources */,
 				6C275321167C47E2009C4E7F /* AudioCell.m in Sources */,
-				6C275338167C57FC009C4E7F /* YXMusicPlayer.m in Sources */,
-				12237C5C167C54F500224B03 /* YXSharePackage.m in Sources */,
 				12237C63167C551D00224B03 /* base64.m in Sources */,
 				12AB52B7167C9A6500BCC18F /* XMPPManager.m in Sources */,
 				12AB531C167C9A8E00BCC18F /* XMPPAnonymousAuthentication.m in Sources */,
