@@ -24,7 +24,7 @@
         self.type = type;
 //        self.dict = [self generateFielDic];
 //        self.duration = [self generateDuration];
-        self.size = []
+//        self.size = []
         
     }
     
