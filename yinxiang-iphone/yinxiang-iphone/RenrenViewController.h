@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ASIFormDataRequest.h"
 
-@interface RenrenViewController : UITableViewController <RenrenDelegate>
+@interface RenrenViewController : UITableViewController <RenrenDelegate, ASIHTTPRequestDelegate>
 
 @property (retain,nonatomic)Renren *renren;
 
