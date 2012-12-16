@@ -253,7 +253,7 @@
 {
     [super viewWillAppear:animated];
 //    [[BumpClient sharedClient] disconnect];
-    NSString *deveiceText = [NSString stringWithFormat:@"连接到: %@", [XMPPManager sharedManager].partnerUserName];
+    NSString *deveiceText = [NSString stringWithFormat:@"%@", [XMPPManager sharedManager].partnerUserName];
     self.deviceName.text = deveiceText;
     
     self.progress.backgroundColor = [UIColor clearColor];
