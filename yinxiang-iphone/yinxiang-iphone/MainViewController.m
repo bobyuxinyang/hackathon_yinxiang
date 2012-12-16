@@ -323,9 +323,10 @@
 {
     YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
     NSLog(@"...prev");
-    
-    [AppUtil showPreHud];
+
     [self.player prev];
+    [AppUtil showPreHud];
+
 }
 
 - (void)controlProgressReceived:(NSNotification *)noti
