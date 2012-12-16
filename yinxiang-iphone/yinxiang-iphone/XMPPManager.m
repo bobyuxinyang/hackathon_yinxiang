@@ -28,6 +28,7 @@ static XMPPManager *instance = nil;
 @synthesize partnerUserId = _partnerUserId;
 @synthesize myUserId = _myUserId;
 @synthesize myUserName = _myUserName;
+@synthesize partnerUserName = _partnerUserName;
 
 - (NSString *)myUserId
 {

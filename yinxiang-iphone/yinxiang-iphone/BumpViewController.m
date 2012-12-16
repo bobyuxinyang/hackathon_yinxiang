@@ -112,7 +112,9 @@
 - (void)doConnect
 {
     NSLog(@"Bump Success");
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否与Bob`iphone链接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
+    
+    NSString *message = [NSString stringWithFormat:@"是否与%@连接？?", [XMPPManager sharedManager].partnerUserName];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
     [alertView show];
 }
 

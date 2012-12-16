@@ -253,8 +253,8 @@
 {
     [super viewWillAppear:animated];
 //    [[BumpClient sharedClient] disconnect];
-    
-    self.deviceName.text = [XMPPManager sharedManager].myUserName;
+    NSString *deveiceText = [NSString stringWithFormat:@"连接到: %@", [XMPPManager sharedManager].partnerUserName];
+    self.deviceName.text = deveiceText;
     
     self.progress.backgroundColor = [UIColor clearColor];
     UIImage *min_stetchTrack = [UIImage imageNamed:@"musiccontrol_progress_full.png"];
@@ -277,7 +277,9 @@
 }
 
 - (IBAction)cancelShare:(id)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否解除与xxx的iphone的连接" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
+    
+    NSString *deveiceText = [NSString stringWithFormat:@"是否解除与%@的连接", [XMPPManager sharedManager].partnerUserName];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:deveiceText delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"连接", nil];
     [alertView show];
 }
 

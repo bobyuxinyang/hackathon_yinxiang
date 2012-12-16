@@ -43,19 +43,25 @@ static BumpManager *instance = nil;
         NSLog(@"Bump Matched");
         // 把自己的XMPP_USER_ID发给对方
         NSString *myUserId = [XMPPManager sharedManager].myUserId;
-
-        [[BumpClient sharedClient] sendData:[myUserId dataUsingEncoding:NSUTF8StringEncoding]
+        NSString *myUserName = [XMPPManager sharedManager].myUserName;
+        NSString *identityStr = [NSString stringWithFormat:@"%@|%@", myUserId, myUserName];
+        
+        [[BumpClient sharedClient] sendData:[identityStr dataUsingEncoding:NSUTF8StringEncoding]
                                   toChannel:channel];
     }];
     
     [[BumpClient sharedClient] setDataReceivedBlock:^(BumpChannelID channel, NSData *data) {
-        NSString *to_user_id = [NSString stringWithCString:[data bytes] encoding:NSUTF8StringEncoding];
-        
+        NSString *identityStr = [NSString stringWithCString:[data bytes] encoding:NSUTF8StringEncoding];
+        NSArray *identityArray = [identityStr componentsSeparatedByString:@"|"];
+        NSString *partnerUserId = [identityArray objectAtIndex:0];
+        NSString *partnerUserName = [identityArray objectAtIndex:1];
+        [XMPPManager sharedManager].partnerUserId = partnerUserId;
+        [XMPPManager sharedManager].partnerUserName = partnerUserName;
         [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPPPartnerIdReceivedNotification object:self];
-        [XMPPManager sharedManager].partnerUserId = to_user_id;
+
         NSLog(@"Data received from %@: %@",
               [[BumpClient sharedClient] userIDForChannel:channel],
-              to_user_id);        
+              partnerUserId);        
     }];
     
     
