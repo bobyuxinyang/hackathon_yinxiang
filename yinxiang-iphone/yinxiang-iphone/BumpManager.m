@@ -18,6 +18,7 @@ static BumpManager *instance = nil;
     @synchronized(self) {
         if (instance == nil) {
             instance = [[self alloc] init]; // assignment not done here
+            instance.isBumpReady = YES;
         }
     }
     return instance;
@@ -25,6 +26,7 @@ static BumpManager *instance = nil;
 
 
 @synthesize currentChannel = _currentChannel;
+@synthesize isBumpReady = _isBumpReady;
 
 - (void)configureBump {
     // userID is a string that you could use as the user's name, or an ID that is semantic within your environment
@@ -33,6 +35,7 @@ static BumpManager *instance = nil;
     [BumpClient configureWithAPIKey:BUMP_API_KEY andUserID:[[UIDevice currentDevice] name]];
     
     [[BumpClient sharedClient] setMatchBlock:^(BumpChannelID channel) {
+        if (!self.isBumpReady) return;
         NSLog(@"Matched with user: %@", [[BumpClient sharedClient] userIDForChannel:channel]);
         [[BumpClient sharedClient] confirmMatch:YES onChannel:channel];
     }];

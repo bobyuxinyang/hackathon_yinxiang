@@ -14,6 +14,7 @@
 #import "XMPPManager.h"
 #import "ASIFormDataRequest.h"
 #import "BumpClient.h"
+#import "BumpManager.h"
 #import "UITextField+HideKeyBoard.h"
 
 @interface BumpViewController () <UIAlertViewDelegate>
@@ -93,7 +94,7 @@
 {
     YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
     [[package.dictionaryData objectForKey:@"duration"] integerValue];
-    [[package.dictionaryData objectForKey:@"duration"] integerValue];    
+    [[package.dictionaryData objectForKey:@"duration"] integerValue];
     NSLog(@"...progress sync");
 }
 
@@ -139,6 +140,21 @@
     [[BumpClient sharedClient] connect];
 }
 
+- (void)xmppConnectionRequired:(NSNotification *)noti
+{
+    YXSharePackage *package = [noti.userInfo objectForKey:@"data"];
+    NSString *userName = [package.dictionaryData objectForKey:@"userName"];
+    NSString *userId = [package.dictionaryData objectForKey:@"userId"];
+    NSLog(@"%@", userName);
+    NSLog(@"%@", userId);
+
+    [XMPPManager sharedManager].partnerUserName = userName;
+    [XMPPManager sharedManager].partnerUserId = userId;
+    
+    [self doConnect];
+}
+
+
 
 - (void)viewDidLoad
 {
@@ -148,10 +164,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bumpSuccessed:) name:YX_XMPPPartnerIdReceivedNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(xmppServerConnected:) name:YX_XMPP_SERVER_CONNECTED object:nil];
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bumpServerConnected:) name:YX_BUMP_SERVER_CONNECTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bumpServerDisconnected:) name:YX_BUMP_SERVER_DISCONNECTED object:nil];
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(xmppConnectionRequired:) name:YX_XMPP_CONTROL_REQUIRE_CONNECTION_NOTIFICATION object:nil];
     
     // just for test
 //    [self getTestSamples];
@@ -218,6 +234,7 @@
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navbar_logo.png"]];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
 
+    [BumpManager shareManager].isBumpReady = YES;
     [[BumpClient sharedClient] connect];
 }
 

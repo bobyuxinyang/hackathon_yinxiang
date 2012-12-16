@@ -148,6 +148,10 @@ static XMPPManager *instance = nil;
             [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPP_CONTROL_SENDTEXT_NOTIFICATION object:self userInfo:yxSharePackageDic];
         } else if (receivedPackage.type == YXSharePackageTypeSyncSendAudio) {
             [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPP_CONTROL_SENDAUDIO_NOTIFICATION object:self userInfo:yxSharePackageDic];
+        } else if (receivedPackage.type == YXSharePackageTypeRequireConnection) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPP_CONTROL_REQUIRE_CONNECTION_NOTIFICATION object:self userInfo:yxSharePackageDic];
+        } else if (receivedPackage.type == YXSharePackageTypeEndConnection) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:YX_XMPP_CONTROL_END_CONNECTION_NOTIFICATION object:self userInfo:yxSharePackageDic];
         }
     }
 }
@@ -182,7 +186,7 @@ static XMPPManager *instance = nil;
     YXSharePackage *package = [[YXSharePackage alloc] init];
     package.type = YXSharePackageTypeNext;
     [self sendMessage:[package toPackageString]];
-    NSLog(@"send next");        
+    NSLog(@"send next");
 }
 
 - (void)sendControllSyncProgressAtIndex:(NSInteger)index
@@ -199,6 +203,25 @@ static XMPPManager *instance = nil;
 - (void)sendControllSendText:(NSString *)text
 {
    NSLog(@"send send text");                
+}
+
+- (void)sendControllRequireConnection:(NSString *)myUserName
+                                AndId:(NSString *)myUserId
+{
+    YXSharePackage *package = [[YXSharePackage alloc] init];
+    package.type = YXSharePackageTypeRequireConnection;
+    [package.dictionaryData setValue:myUserName forKey:@"userName"];
+    [package.dictionaryData setValue:myUserId forKey:@"userId"];
+    [self sendMessage:[package toPackageString]];
+    NSLog(@"send require connection");
+}
+
+- (void)sendControllEndConnection
+{
+    YXSharePackage *package = [[YXSharePackage alloc] init];
+    package.type = YXSharePackageTypeEndConnection;
+    [self sendMessage:[package toPackageString]];
+    NSLog(@"send end connection");
 }
 
 

@@ -14,6 +14,7 @@
 #import "define.h"
 #import "XMPPManager.h"
 #import "BumpClient.h"
+#import "BumpManager.h"
 #import "YXRecorder.h"
 #import "MessageCell.h" 
 
@@ -252,7 +253,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    [[BumpClient sharedClient] disconnect];
+    [BumpManager shareManager].isBumpReady = YES;
     NSString *deveiceText = [NSString stringWithFormat:@"%@", [XMPPManager sharedManager].partnerUserName];
     self.deviceName.text = deveiceText;
     

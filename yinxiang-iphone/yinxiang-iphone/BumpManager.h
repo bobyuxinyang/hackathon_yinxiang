@@ -18,4 +18,5 @@
 - (void)configureBump;
 
 @property (nonatomic) BumpChannelID currentChannel;
+@property (nonatomic) BOOL isBumpReady;
 @end

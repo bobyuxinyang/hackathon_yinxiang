@@ -16,11 +16,13 @@
 {
     NSArray        *peoples;
 }
+@property (nonatomic, copy) NSString *selectedName;
 @end
 
 @implementation RenrenViewController
 
 @synthesize renren = _renren;
+@synthesize selectedName = _selectedName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,6 +42,11 @@
     [params setObject:@"name, tinyurl" forKey:@"fields"];
     
     [self.renren requestWithParams:params andDelegate:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.title = @"来自人人网的好友";
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,9 +140,8 @@
     [request setPostValue:@"query_xmppid" forKey:@"method"];
     
     NSDictionary *p = (NSDictionary *)[peoples objectAtIndex: indexPath.row];
-    
     [request setPostValue:[p objectForKey: @"uid"] forKey:@"renren_id"];
-    
+    self.selectedName = [p objectForKey:@"name"];
     [request startSynchronous];
 }
 
@@ -154,9 +160,12 @@
     {
         NSString *xmpp_id = [(NSDictionary *)jsonObject objectForKey:@"xmpp_id"];
         [XMPPManager sharedManager].partnerUserId = xmpp_id;
+        [XMPPManager sharedManager].partnerUserName = self.selectedName;
         
         BumpViewController *bumpViewController = [self.navigationController.viewControllers objectAtIndex:0];
         [bumpViewController doConnect];
+        // 通知对方跟自己连接
+        [[XMPPManager sharedManager] sendControllRequireConnection:[XMPPManager sharedManager].myUserName AndId:[XMPPManager sharedManager].myUserId];
 
         [self.navigationController popViewControllerAnimated:YES];
     } else {

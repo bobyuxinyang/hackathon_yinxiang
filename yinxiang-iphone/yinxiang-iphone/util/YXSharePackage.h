@@ -30,6 +30,8 @@ typedef enum _YXSharePackageTypeEnum{
     YXSharePackageTypeSyncProgress = 4, //    时间同步（跳转）
     YXSharePackageTypeSyncSendText = 5, //    发送文字消息
     YXSharePackageTypeSyncSendAudio = 6,//    发送音频消息
+    YXSharePackageTypeRequireConnection = 7,//    请求建立连接
+    YXSharePackageTypeEndConnection = 8, //   请求取消连接
 }YXSharePackageTypeEnum;
 
 @interface YXSharePackage : NSObject

@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1536</int>
-		<string key="IBDocument.SystemVersion">12A269</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
-		<string key="IBDocument.AppKitVersion">1187</string>
-		<string key="IBDocument.HIToolboxVersion">624.00</string>
+		<string key="IBDocument.SystemVersion">12C3006</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1926</string>
+			<string key="NS.object.0">1930</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -896,20 +896,20 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="Let It Be.jpg">{16, 16}</string>
-			<string key="musiccontrol_bg.png">{16, 16}</string>
-			<string key="musiccontrol_next.png">{16, 16}</string>
-			<string key="musiccontrol_pause.png">{16, 16}</string>
-			<string key="musiccontrol_play.png">{16, 16}</string>
-			<string key="musiccontrol_previous.png">{16, 16}</string>
-			<string key="nav_icon_arrow.png">{16, 16}</string>
-			<string key="nav_icon_link.png">{16, 16}</string>
-			<string key="nav_icon_songlist.png">{16, 16}</string>
-			<string key="nav_line.png">{16, 16}</string>
-			<string key="speak_bg.png">{16, 16}</string>
-			<string key="speak_btn_normal.png">{16, 16}</string>
-			<string key="speak_btn_select.png">{16, 16}</string>
+			<string key="Let It Be.jpg">{500, 500}</string>
+			<string key="musiccontrol_bg.png">{320, 77}</string>
+			<string key="musiccontrol_next.png">{23, 26}</string>
+			<string key="musiccontrol_pause.png">{23, 26}</string>
+			<string key="musiccontrol_play.png">{23, 26}</string>
+			<string key="musiccontrol_previous.png">{23, 26}</string>
+			<string key="nav_icon_arrow.png">{30, 44}</string>
+			<string key="nav_icon_link.png">{50, 44}</string>
+			<string key="nav_icon_songlist.png">{50, 44}</string>
+			<string key="nav_line.png">{2, 44}</string>
+			<string key="speak_bg.png">{320, 44}</string>
+			<string key="speak_btn_normal.png">{170, 31}</string>
+			<string key="speak_btn_select.png">{170, 31}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1926</string>
+		<string key="IBCocoaTouchPluginVersion">1930</string>
 	</data>
 </archive>

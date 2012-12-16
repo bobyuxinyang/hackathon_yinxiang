@@ -28,5 +28,7 @@
 - (void)sendControllSyncProgressAtIndex:(NSInteger)index
                             AndDuration:(NSInteger)duration;
 - (void)sendControllSendText:(NSString *)text;
+- (void)sendControllRequireConnection:(NSString *)myUserName AndId:(NSString *)myUserId;
+- (void)sendControllEndConnection;
 
 @end
